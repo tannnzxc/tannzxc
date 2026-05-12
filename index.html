@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tristan P. Fornoles | Portfolio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --primary-blue: #0369a1;
+            --accent-blue: #38bdf8;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            background: var(--bg-color);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 20px;
+            text-align: center;
+        }
+
+        .profile-img-container {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 4px solid white;
+            background-color: #e2e8f0;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s ease, border 0.3s ease;
+            height: 100%;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+        }
+
+        .navbar {
+            background: var(--nav-bg) !important;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            color: var(--text-main) !important;
+            font-weight: 600;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .badge-custom {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .btn-repo {
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-repo:hover {
+            background-color: var(--accent-blue);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-4 mb-4" data-aos="fade-right">
+                <div class="profile-card">
+
+                    <div class="profile-img-container">
+                        <img src="profile.jpg" alt="">👤
+                    </div>
+
+                    <h3 class="fw-bold">Tristan P. Fornoles</h3>
+                    <p class="text-muted small">IT Student | DIT 2-1</p>
+
+                    <hr style="opacity: 0.1;">
+
+                    <div class="text-start small">
+                        <p class="mb-2"><strong>Email:</strong><br><span
+                                class="text-muted text-break">tristan.fornoles09@gmail.com</span></p>
+                        <p class="mb-2"><strong>Education:</strong><br><span class="text-muted text-wrap">PUP Sto. Tomas
+                                Campus</span></p>
+                        <p class="mb-0"><strong>Location:</strong><br><span class="text-muted">Sto. Tomas,
+                                Batangas</span></p>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="https://tannnzxc.github.io/tan.github.io/" target="_blank"
+                            class="btn btn-repo btn-sm w-100 shadow-sm">View GitHub Repo</a>
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                        <span class="badge-custom">Web Design</span>
+                        <span class="badge-custom">IT Student</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8">
+
+                <nav class="navbar navbar-expand p-2 mb-5 px-4" data-aos="fade-down">
+                    <div class="navbar-nav w-100 justify-content-around text-center">
+                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#academic">Academic</a>
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </div>
+                </nav>
+
+                <section id="about" class="mb-5" data-aos="fade-up">
+                    <h2 class="section-title">About Overview</h2>
+                    <div class="info-card">
+                        <p class="lead">I am an enthusiastic Information Technology student currently pursuing my degree
+                            at PUP Sto. Tomas Campus.</p>
+                        <p>I am passionate about learning web development technologies and system administration. My
+                            goal is to leverage my academic background to build efficient digital solutions and
+                            contribute to the ever-evolving world of IT.</p>
+                    </div>
+                </section>
+
+                <section id="academic" class="mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Academic Work</h2>
+                    <div class="row g-4">
+                        <div class="col-md-12 mb-2" data-aos="zoom-in">
+                            <div class="info-card" style="border-left: 5px solid var(--primary-blue);">
+                                <h5>Activity 2</h5>
+                                <a href="https://tannnzxc.github.io/tan.github.io/" target="_blank"
+                                    class="text-decoration-none fw-bold" style="color: var(--primary-blue);">Visit
+                                    Repository →</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="info-card" style="border-left: 5px solid var(--primary-blue);">
+                                <h5>Midterms</h5>
+                                <a href="https://tannnzxc.github.io/midterms/" target="_blank"
+                                    class="text-decoration-none fw-bold" style="color: var(--primary-blue);">Visit
+                                    Repository →</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="info-card">
+                                <h5>⚙️ System Administration</h5>
+                                <p class="text-muted small">Explored the basics of operating systems, hardware
+                                    components, and fundamental network configurations.</p>
+                                <span class="badge bg-light text-primary border">IT Lab</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="skills" class="mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6" data-aos="fade-right">
+                            <div class="info-card">
+                                <h6 class="fw-bold text-primary">DEVELOPMENT</h6>
+                                <p class="small mb-0">Foundational knowledge in HTML, CSS, and Bootstrap. Currently
+                                    exploring JavaScript for interactivity.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6" data-aos="fade-left">
+                            <div class="info-card">
+                                <h6 class="fw-bold text-primary">CORE TOOLS</h6>
+                                <p class="small mb-0">Proficient in using VS Code for development and Google Chrome
+                                    Developer Tools for debugging.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        
+        AOS.init({ duration: 800, once: true });
+    </script>
+</body>
+
+</html>

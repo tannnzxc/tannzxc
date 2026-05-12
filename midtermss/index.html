@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coffee House | Premium Brews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root { --transition-speed: 0.4s; }
+        body { transition: background-color var(--transition-speed), color var(--transition-speed); font-family: 'Poppins', sans-serif; }
+        
+        [data-bs-theme="light"] body { background-color: #ffffff; color: #212529; }
+        .custom-nav { transition: background-color var(--transition-speed); }
+        [data-bs-theme="light"] .custom-nav { background-color: #f8f9fa !important; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        [data-bs-theme="light"] .nav-link, [data-bs-theme="light"] .navbar-brand { color: #212529 !important; }
+
+        .theme-toggle-container {
+            cursor: pointer; font-size: 1.2rem; padding: 5px 15px; border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        [data-bs-theme="light"] .theme-toggle-container { background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top custom-nav" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" onclick="showHomePage()">THE COFFEE HOUSE</a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <div class="theme-toggle-container" onclick="toggleFullWebsiteTheme()">
+                    <span id="theme-icon">🌙</span>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="#" class="nav-link text-white fw-bold" onclick="showHomePage()">HOME</a>
+                    <a href="#" class="nav-link text-white fw-bold" onclick="showOrderPage()">MENU</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home-page">
+        <header class="hero-section text-center d-flex align-items-center">
+            <div class="container">
+                <h1 class="display-2 fw-bold text-white mb-4">Artisanal Coffee & Fresh Sips</h1>
+                <p class="lead text-light mb-5">Experience the perfect blend of hand-picked beans and oven-fresh pastries.</p>
+                <button class="btn btn-accent btn-lg px-5 py-3 rounded-pill fw-bold" onclick="showOrderPage()">EXPLORE MENU</button>
+            </div>
+        </header>
+    </section>
+
+    <section id="order-page" style="display: none;">
+        <div class="container my-5">
+            <h2 class="fw-bold text-center mb-4">Our Selection</h2>
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6">
+                    <input type="text" id="search-bar" class="form-control rounded-pill px-4 py-2 bg-dark text-white border-secondary" placeholder="Search our brews and treats...">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+                <button class="btn btn-outline-accent active filter-btn" onclick="filterMenu('all')">ALL</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('coffee')">COFFEE</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('juice')">JUICE</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('pastry')">PASTRY</button>
+            </div>
+            <div id="coffee-container" class="row g-3"></div>
+        </div>
+        <div class="fixed-bottom text-end p-4" style="z-index: 1030;">
+            <button class="btn btn-accent btn-lg rounded-pill shadow-lg px-4 fw-bold" data-bs-toggle="modal" data-bs-target="#orderSummaryModal">
+                MY TRAY (<span id="order-count">0</span>)
+            </button>
+        </div>
+    </section>
+
+    <div class="modal fade" id="coffeeModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 overflow-hidden"><div id="modalHeaderImg" class="modal-hero" style="height:200px;background-size:cover;"></div><div class="modal-body p-4"></div></div></div></div>
+    <div class="modal fade" id="orderSummaryModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 shadow"><div class="modal-header"><h5 class="modal-title fw-bold">Review Order</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div id="order-list"></div><hr><div class="d-flex justify-content-between fw-bold fs-5"><span>Total:</span><span id="total-price-display" class="text-accent">₱0.00</span></div></div><div class="modal-footer border-0"><button class="btn btn-accent w-100 rounded-pill fw-bold py-3" onclick="checkout()">PROCEED TO CHECKOUT</button></div></div></div></div>
+    <div class="modal fade" id="receiptModal" tabindex="-1" data-bs-backdrop="static"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 text-dark bg-white"><div class="modal-body p-4"><div id="receipt-content"></div><button class="btn btn-dark w-100 rounded-pill fw-bold mt-3" onclick="closeReceiptAndReset()">ORDER AGAIN</button></div></div></div></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleFullWebsiteTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const searchBar = document.getElementById('search-bar');
+            const currentTheme = html.getAttribute('data-bs-theme');
+
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-bs-theme', 'light');
+                themeIcon.innerText = '☀️';
+                if(searchBar) searchBar.classList.replace('bg-dark', 'bg-light'), searchBar.classList.replace('text-white', 'text-dark');
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.replace('text-white', 'text-dark'));
+            } else {
+                html.setAttribute('data-bs-theme', 'dark');
+                themeIcon.innerText = '🌙';
+                if(searchBar) searchBar.classList.replace('bg-light', 'bg-dark'), searchBar.classList.replace('text-dark', 'text-white');
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.replace('text-dark', 'text-white'));
+            }
+        }
+        
+        function showHomePage() {
+            document.getElementById('home-page').style.display = 'block';
+            document.getElementById('order-page').style.display = 'none';
+        }
+        function showOrderPage() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('order-page').style.display = 'block';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

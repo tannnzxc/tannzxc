@@ -1,0 +1,129 @@
+:root {
+    --accent: #bc8a5f;
+    --navy: #0f172a;
+    --slate: #1e293b;
+    --dark: #020617;
+}
+
+body {
+    background-color: var(--dark);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin: 0;
+    overflow-x: hidden;
+
+}
+
+.custom-nav {
+    background-color: var(--dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    letter-spacing: 4px;
+    text-decoration: none;
+    color: white !important;
+}
+
+
+.hero-section {
+    min-height: 90vh;
+    background: linear-gradient(rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.8)),
+        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.btn-outline-accent {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50px;
+    padding: 8px 25px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-outline-accent:hover,
+.btn-outline-accent.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+.btn-accent {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-accent:hover {
+    background-color: #a6764d;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+.coffee-card {
+    background: var(--slate);
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: none;
+    height: 100%;
+}
+
+.coffee-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.coffee-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+}
+
+
+.modal-hero {
+    height: 250px;
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+}
+
+.bg-navy {
+    background-color: var(--navy) !important;
+}
+
+
+.text-accent {
+    color: var(--accent) !important;
+}
+
+.form-select {
+    background-color: var(--dark) !important;
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+
+#receipt-content {
+    font-family: 'Courier New', Courier, monospace;
+    background: #f8f9fa;
+    color: #333;
+    padding: 20px;
+    border-radius: 5px;
+}

@@ -1,0 +1,199 @@
+<<<<<<< HEAD
+
+:root {
+    --bg-color: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --primary-blue: #0369a1;
+    --accent-blue: #38bdf8;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+
+body {
+    background: var(--bg-color);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 20px;
+    text-align: center;
+}
+
+.profile-img-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.info-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, border 0.3s ease;
+    height: 100%;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+}
+
+
+.navbar {
+    background: var(--nav-bg) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    color: var(--text-main) !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue) !important;
+}
+
+
+.section-title {
+    color: var(--primary-blue);
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.badge-custom {
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+}
+=======
+
+:root {
+    --bg-color: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --primary-blue: #0369a1;
+    --accent-blue: #38bdf8;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+}
+
+
+body {
+    background: var(--bg-color);
+    background-attachment: fixed;
+    color: var(--text-main);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: all 0.3s ease;
+    min-height: 100vh;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.profile-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 20px;
+    text-align: center;
+}
+
+.profile-img-placeholder {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.info-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.4s ease, border 0.3s ease;
+    height: 100%;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+}
+
+
+.navbar {
+    background: var(--nav-bg) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+    color: var(--text-main) !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--primary-blue) !important;
+}
+
+
+.section-title {
+    color: var(--primary-blue);
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.badge-custom {
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+}
+>>>>>>> 7bf51977324e19dfbd226f3743656fb577cd64ec
