@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+function startCoffeeApp() {
+
+    if (typeof bootstrap === 'undefined') {
+        console.error('Bootstrap failed to load. Check your internet connection.');
+        return;
+    }
 
     const coffeeContainer = document.getElementById('coffee-container');
     const coffeeModalElement = document.getElementById('coffeeModal');
@@ -520,9 +525,10 @@ document.addEventListener('DOMContentLoaded', () => {
         saveAndUpdate();
     };
 
-    window.filterMenu = (cat) => {
+    window.filterMenu = (cat, evt) => {
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        if (event) event.target.classList.add('active');
+        const target = evt?.target || window.event?.target;
+        if (target) target.classList.add('active');
 
         const filtered = cat === 'all' ? allItems : allItems.filter(i => i.category === cat);
         renderItems(filtered);
@@ -632,4 +638,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initMenu();
     updateOrderUI();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startCoffeeApp);
+} else {
+    startCoffeeApp();
+}

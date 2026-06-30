@@ -43,6 +43,7 @@
         }
 
         .profile-img-container {
+            position: relative;
             width: 130px;
             height: 130px;
             border-radius: 50%;
@@ -54,10 +55,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: white;
-            letter-spacing: 1px;
         }
 
         .profile-img-container img {
@@ -135,7 +132,10 @@
             <div class="col-lg-4 mb-4" data-aos="fade-right">
                 <div class="profile-card">
 
-                    <div class="profile-img-container">TF</div>
+                    <div class="profile-img-container" id="profile-photo">
+                        <img src="A02_tannnzxc/profgit.jpg" alt="Tristan P. Fornoles"
+                            onerror="this.onerror=null;this.src='profile.jpg';">
+                    </div>
 
                     <h3 class="fw-bold">Tristan P. Fornoles</h3>
                     <p class="text-muted small">IT Student | DIT 2-1</p>
@@ -201,7 +201,7 @@
                             <div class="info-card" style="border-left: 5px solid var(--primary-blue);">
                                 <h5>Midterms — The Coffee House</h5>
                                 <p class="text-muted small mb-2">Interactive café menu with coffee, juices, and desserts.</p>
-                                <a href="midtermss/"
+                                <a href="midtermss/index.html"
                                     class="text-decoration-none fw-bold" style="color: var(--primary-blue);">Visit
                                     Project →</a>
                             </div>
@@ -243,7 +243,6 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        
         AOS.init({ duration: 800, once: true });
     </script>
 </body>
