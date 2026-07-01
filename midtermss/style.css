@@ -22,7 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ── Navbar ── */
 .custom-nav {
     background: rgba(2, 6, 23, 0.92);
     backdrop-filter: blur(16px);
@@ -75,7 +74,6 @@ body {
     background: rgba(255, 255, 255, 0.14);
 }
 
-/* ── Hero ── */
 .hero-section {
     position: relative;
     min-height: 92vh;
@@ -147,7 +145,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* ── Sections ── */
 .section-label {
     display: block;
     font-size: 0.72rem;
@@ -255,7 +252,6 @@ body {
     margin-bottom: 0.75rem;
 }
 
-/* ── Menu Page ── */
 .menu-hero {
     background: linear-gradient(180deg, var(--navy) 0%, var(--dark) 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -295,7 +291,6 @@ body {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* ── Buttons ── */
 .btn-outline-accent {
     border: 1px solid var(--accent);
     color: var(--accent);
@@ -331,7 +326,6 @@ body {
     box-shadow: 0 6px 20px var(--accent-glow);
 }
 
-/* ── Product Cards ── */
 .coffee-card {
     background: var(--slate);
     border-radius: 18px;
@@ -392,7 +386,6 @@ body {
     margin-bottom: 0.75rem;
 }
 
-/* ── Skeleton Loader ── */
 .skeleton-card {
     height: 280px;
     border-radius: 18px;
@@ -406,7 +399,6 @@ body {
     100% { background-position: -200% 0; }
 }
 
-/* ── Modal ── */
 .modal-hero {
     height: 220px;
     background-size: cover;
@@ -431,7 +423,6 @@ body {
     padding: 10px 14px;
 }
 
-/* ── Cart & Order ── */
 #receipt-content {
     font-family: 'Courier New', Courier, monospace;
     background: #f8f9fa;
@@ -581,7 +572,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* ── Light Theme ── */
 [data-bs-theme="light"] body {
     background-color: #f5f0eb;
     color: #1e293b;
