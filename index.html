@@ -4,168 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tristan P. Fornoles | Portfolio</title>
+    <title>Tristan P. Fornoles | IT Portfolio</title>
+    <meta name="description" content="Portfolio of Tristan P. Fornoles — IT Student specializing in web development, data analytics, and business intelligence.">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --primary-blue: #0369a1;
-            --accent-blue: #38bdf8;
-            --nav-bg: rgba(255, 255, 255, 0.8);
-        }
-
-        body {
-            background: var(--bg-color);
-            background-attachment: fixed;
-            color: var(--text-main);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            transition: all 0.3s ease;
-            min-height: 100vh;
-        }
-
-        .profile-card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 20px;
-            text-align: center;
-        }
-
-        .profile-img-container {
-            position: relative;
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border: 4px solid white;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .info-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s ease, border 0.3s ease;
-            height: 100%;
-        }
-
-        .info-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-blue);
-        }
-
-        .navbar {
-            background: var(--nav-bg) !important;
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-link {
-            color: var(--text-main) !important;
-            font-weight: 600;
-        }
-
-        .section-title {
-            color: var(--primary-blue);
-            font-weight: 800;
-            margin-bottom: 30px;
-        }
-
-        .badge-custom {
-            background: var(--primary-blue);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-        }
-
-        .btn-repo {
-            background-color: var(--primary-blue);
-            color: white;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .btn-repo:hover {
-            background-color: var(--accent-blue);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link rel="stylesheet" href="style_portfolio.css">
 </head>
 
 <body>
 
     <div class="container py-5">
-        <div class="row">
+        <div class="row g-4">
 
-            <div class="col-lg-4 mb-4" data-aos="fade-right">
+            <!-- Profile Sidebar -->
+            <div class="col-lg-4" data-aos="fade-right">
                 <div class="profile-card">
-
-                    <div class="profile-img-container" id="profile-photo">
+                    <div class="profile-img-container">
                         <img src="A02_tannnzxc/profgit.jpg" alt="Tristan P. Fornoles"
                             onerror="this.onerror=null;this.src='profile.jpg';">
                     </div>
 
-                    <h3 class="fw-bold">Tristan P. Fornoles</h3>
-                    <p class="text-muted small">IT Student | DIT 2-1</p>
+                    <h3 class="profile-name">Tristan P. Fornoles</h3>
+                    <p class="profile-role">IT Student · DIT 2-1</p>
 
-                    <hr style="opacity: 0.1;">
+                    <hr class="profile-divider">
 
-                    <div class="text-start small">
-                        <p class="mb-2"><strong>Email:</strong><br><span
-                                class="text-muted text-break">tristan.fornoles09@gmail.com</span></p>
-                        <p class="mb-2"><strong>Education:</strong><br><span class="text-muted text-wrap">PUP Sto. Tomas
-                                Campus</span></p>
-                        <p class="mb-0"><strong>Location:</strong><br><span class="text-muted">Sto. Tomas,
-                                Batangas</span></p>
+                    <div class="profile-detail">
+                        <p class="mb-3">
+                            <strong>Email</strong><br>
+                            <span class="text-muted">tristan.fornoles09@gmail.com</span>
+                        </p>
+                        <p class="mb-3">
+                            <strong>Education</strong><br>
+                            <span class="text-muted">PUP Sto. Tomas Campus</span>
+                        </p>
+                        <p class="mb-0">
+                            <strong>Location</strong><br>
+                            <span class="text-muted">Sto. Tomas, Batangas</span>
+                        </p>
                     </div>
 
                     <div class="mt-4">
-                        <a href="https://github.com/tannnzxc/tannnzxc" target="_blank"
-                            class="btn btn-repo btn-sm w-100 shadow-sm">View GitHub Repo</a>
+                        <a href="https://github.com/tannnzxc/tannnzxc" target="_blank" rel="noopener"
+                            class="btn btn-repo w-100">
+                            <i class="bi bi-github me-2"></i>View GitHub Repo
+                        </a>
                     </div>
 
-                    <div class="d-flex justify-content-center gap-2 mt-3">
+                    <div class="d-flex justify-content-center flex-wrap gap-2 mt-3">
                         <span class="badge-custom">Web Design</span>
+                        <span class="badge-custom">Data Analytics</span>
                         <span class="badge-custom">IT Student</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Main Content -->
             <div class="col-lg-8">
 
-                <nav class="navbar navbar-expand p-2 mb-5 px-4" data-aos="fade-down">
+                <nav class="navbar navbar-expand navbar-portfolio mb-5" data-aos="fade-down">
                     <div class="navbar-nav w-100 justify-content-around text-center">
                         <a class="nav-link" href="#about">About</a>
                         <a class="nav-link" href="#academic">Academic</a>
@@ -173,69 +75,129 @@
                     </div>
                 </nav>
 
+                <!-- About -->
                 <section id="about" class="mb-5" data-aos="fade-up">
+                    <span class="section-label">Introduction</span>
                     <h2 class="section-title">About Overview</h2>
                     <div class="info-card">
-                        <p class="lead">I am an enthusiastic Information Technology student currently pursuing my degree
-                            at PUP Sto. Tomas Campus.</p>
-                        <p>I am passionate about learning web development technologies and system administration. My
-                            goal is to leverage my academic background to build efficient digital solutions and
-                            contribute to the ever-evolving world of IT.</p>
+                        <p class="lead mb-3" style="color: var(--primary); font-weight: 500;">
+                            Enthusiastic Information Technology student with a passion for building digital solutions.
+                        </p>
+                        <p class="text-muted mb-0">
+                            I am currently pursuing my degree at PUP Sto. Tomas Campus, with hands-on experience in
+                            web development, business intelligence, and system administration. My goal is to leverage
+                            technology to create efficient, data-driven solutions that make a real impact.
+                        </p>
                     </div>
                 </section>
 
+                <!-- Academic Work -->
                 <section id="academic" class="mb-5">
+                    <span class="section-label" data-aos="fade-up">Projects</span>
                     <h2 class="section-title" data-aos="fade-up">Academic Work</h2>
                     <div class="row g-4">
-                        <div class="col-md-12 mb-2" data-aos="zoom-in">
-                            <div class="info-card" style="border-left: 5px solid var(--primary-blue);">
-                                <h5>Activity 2 — Tannnzxc Store</h5>
-                                <p class="text-muted small mb-2">Product specs page with glassmorphism UI design.</p>
-                                <a href="A02_tannnzxc/index_A02.html"
-                                    class="text-decoration-none fw-bold" style="color: var(--primary-blue);">Visit
-                                    Project →</a>
+                        <div class="col-12" data-aos="zoom-in">
+                            <div class="info-card project-card">
+                                <div class="project-icon"><i class="bi bi-phone"></i></div>
+                                <h5 class="fw-bold mb-2">Activity 2 — Tannnzxc Store</h5>
+                                <p class="text-muted small mb-3">Product specs page with glassmorphism UI design and detailed tech specifications.</p>
+                                <a href="A02_tannnzxc/index_A02.html" class="project-link">
+                                    Visit Project <i class="bi bi-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
 
                         <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="info-card" style="border-left: 5px solid var(--primary-blue);">
-                                <h5>Midterms — The Coffee House</h5>
-                                <p class="text-muted small mb-2">Interactive café menu with coffee, juices, and desserts.</p>
-                                <a href="midtermss/index.html"
-                                    class="text-decoration-none fw-bold" style="color: var(--primary-blue);">Visit
-                                    Project →</a>
+                            <div class="info-card project-card">
+                                <div class="project-icon"><i class="bi bi-cup-hot"></i></div>
+                                <h5 class="fw-bold mb-2">Midterms — The Coffee House</h5>
+                                <p class="text-muted small mb-3">Interactive café menu with coffee, juices, desserts, and full ordering system.</p>
+                                <a href="midtermss/index.html" class="project-link">
+                                    Visit Project <i class="bi bi-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
+
                         <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
                             <div class="info-card">
-                                <h5>⚙️ System Administration</h5>
-                                <p class="text-muted small">Explored the basics of operating systems, hardware
-                                    components, and fundamental network configurations.</p>
-                                <span class="badge bg-light text-primary border">IT Lab</span>
+                                <div class="project-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                                <h5 class="fw-bold mb-2">System Administration</h5>
+                                <p class="text-muted small mb-3">Explored operating systems, hardware components, and fundamental network configurations.</p>
+                                <span class="skill-tag">IT Lab</span>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section id="skills" class="mb-5">
+                <!-- Technical Skills -->
+                <section id="skills" class="mb-4">
+                    <span class="section-label" data-aos="fade-up">Expertise</span>
                     <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
                     <div class="row g-4">
-                        <div class="col-md-6" data-aos="fade-right">
-                            <div class="info-card">
-                                <h6 class="fw-bold text-primary">DEVELOPMENT</h6>
-                                <p class="small mb-0">Foundational knowledge in HTML, CSS, and Bootstrap. Currently
-                                    exploring JavaScript for interactivity.</p>
+
+                        <div class="col-md-6" data-aos="fade-up">
+                            <div class="skill-card">
+                                <div class="skill-card-header">
+                                    <div class="skill-icon dev"><i class="bi bi-code-slash"></i></div>
+                                    <h6>Web Development</h6>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">HTML & CSS</span>
+                                    <span class="skill-tag">Bootstrap</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">Responsive Design</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6" data-aos="fade-left">
-                            <div class="info-card">
-                                <h6 class="fw-bold text-primary">CORE TOOLS</h6>
-                                <p class="small mb-0">Proficient in using VS Code for development and Google Chrome
-                                    Developer Tools for debugging.</p>
+
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                            <div class="skill-card">
+                                <div class="skill-card-header">
+                                    <div class="skill-icon bi"><i class="bi bi-bar-chart-line"></i></div>
+                                    <h6>Business Intelligence</h6>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag highlight">Power BI</span>
+                                    <span class="skill-tag highlight">Dashboard Creation</span>
+                                    <span class="skill-tag highlight">Data Analysis & Reporting</span>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="150">
+                            <div class="skill-card">
+                                <div class="skill-card-header">
+                                    <div class="skill-icon tools"><i class="bi bi-tools"></i></div>
+                                    <h6>Core Tools</h6>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">VS Code</span>
+                                    <span class="skill-tag">Chrome DevTools</span>
+                                    <span class="skill-tag">Git & GitHub</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="skill-card">
+                                <div class="skill-card-header">
+                                    <div class="skill-icon dev"><i class="bi bi-server"></i></div>
+                                    <h6>IT Fundamentals</h6>
+                                </div>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">System Administration</span>
+                                    <span class="skill-tag">Networking Basics</span>
+                                    <span class="skill-tag">Hardware</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </section>
+
+                <footer class="site-footer-portfolio">
+                    <p class="mb-0">&copy; 2026 Tristan P. Fornoles · Built with HTML, CSS & Bootstrap</p>
+                </footer>
 
             </div>
         </div>
@@ -243,7 +205,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 700, once: true, offset: 40 });
     </script>
 </body>
 
