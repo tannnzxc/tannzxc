@@ -20,7 +20,11 @@
     --border-bright: rgba(96, 207, 255, 0.28);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
     --shadow-glow: 0 8px 32px rgba(59, 158, 255, 0.15);
-    --radius: 18px;
+    --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.12), 0 12px 32px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(96, 207, 255, 0.06);
+    --shadow-card-hover: 0 8px 16px rgba(0, 0, 0, 0.18), 0 20px 48px rgba(59, 158, 255, 0.18), 0 0 0 1px rgba(96, 207, 255, 0.14);
+    --radius: 26px;
+    --radius-sm: 16px;
+    --radius-lg: 32px;
     --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
     --orb-opacity: 0.55;
@@ -45,6 +49,8 @@
     --border-bright: rgba(29, 111, 212, 0.3);
     --shadow: 0 8px 32px rgba(10, 22, 40, 0.1);
     --shadow-glow: 0 8px 32px rgba(29, 111, 212, 0.12);
+    --shadow-card: 0 4px 6px rgba(10, 22, 40, 0.04), 0 12px 32px rgba(10, 22, 40, 0.08), 0 0 0 1px rgba(29, 111, 212, 0.08);
+    --shadow-card-hover: 0 8px 16px rgba(10, 22, 40, 0.08), 0 20px 48px rgba(29, 111, 212, 0.14), 0 0 0 1px rgba(29, 111, 212, 0.15);
     --orb-opacity: 0.25;
 }
 
@@ -230,7 +236,7 @@ body::before {
 .icon-btn {
     width: 38px;
     height: 38px;
-    border-radius: 10px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     background: rgba(59, 158, 255, 0.08);
     color: var(--accent);
@@ -274,10 +280,15 @@ body::before {
     background: var(--surface);
     backdrop-filter: blur(20px);
     border: 1px solid var(--border-bright);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2rem 2.25rem;
     overflow: hidden;
-    box-shadow: var(--shadow), var(--shadow-glow);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.35s ease;
+}
+
+.hero-banner:hover {
+    box-shadow: var(--shadow-card-hover);
 }
 
 .hero-glow {
@@ -358,14 +369,20 @@ body::before {
 .profile-card {
     background: var(--surface);
     backdrop-filter: blur(20px);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 2.5rem 2rem;
     border: 1px solid var(--border-bright);
-    box-shadow: var(--shadow), var(--shadow-glow);
+    box-shadow: var(--shadow-card);
     position: sticky;
     top: 80px;
     text-align: center;
     overflow: hidden;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.profile-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
 }
 
 .profile-card::before {
@@ -478,7 +495,7 @@ body::before {
     background: linear-gradient(135deg, #1d6fd4, var(--primary));
     color: white;
     border: 1px solid rgba(96, 207, 255, 0.3);
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 0.85rem;
     padding: 0.7rem 1rem;
@@ -500,7 +517,7 @@ body::before {
     background: transparent;
     color: var(--accent);
     border: 1px solid var(--border-bright);
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 0.85rem;
     padding: 0.7rem 1rem;
@@ -565,10 +582,11 @@ body::before {
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--border);
-    border-radius: 14px;
+    border-radius: var(--radius);
     overflow: hidden;
     margin-bottom: 2rem;
     border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
 }
 
 .stat-item {
@@ -671,23 +689,87 @@ body::before {
     border-radius: var(--radius);
     padding: 1.85rem;
     border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.3s;
     height: 100%;
 }
 
 .info-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     border-color: var(--border-bright);
-    box-shadow: var(--shadow), var(--shadow-glow);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .about-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
 }
 
 .info-card.project-card {
-    border-left: 4px solid var(--primary);
+    border-left: none;
+}
+
+.project-card-pro {
+    position: relative;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card-pro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.project-card-alt::before {
+    background: linear-gradient(90deg, #c8956c, #e8b88a);
+}
+
+.project-card-pro:hover {
+    transform: translateY(-8px);
+}
+
+.projects-grid .col-md-6 {
+    display: flex;
+}
+
+.project-desc {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--text-readable);
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+}
+
+[data-theme="light"] .project-desc {
+    color: var(--text-body);
+}
+
+.badge-warm {
+    background: rgba(200, 149, 108, 0.18) !important;
+    color: #e8b88a !important;
+    border-color: rgba(200, 149, 108, 0.35) !important;
+}
+
+[data-theme="light"] .badge-warm {
+    color: #a6764d !important;
+}
+
+.project-icon-warm {
+    background: rgba(200, 149, 108, 0.15) !important;
+    color: #e8b88a !important;
+    border-color: rgba(200, 149, 108, 0.3) !important;
+}
+
+[data-theme="light"] .project-icon-warm {
+    color: #a6764d !important;
 }
 
 .info-card h5 {
@@ -733,17 +815,18 @@ body::before {
 }
 
 .project-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-sm);
     background: rgba(59, 158, 255, 0.15);
     color: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     border: 1px solid var(--border);
+    box-shadow: 0 4px 14px rgba(59, 158, 255, 0.15);
 }
 
 .project-link {
@@ -771,7 +854,8 @@ body::before {
     border: 1px solid rgba(167, 139, 250, 0.2);
     height: 100%;
     overflow: hidden;
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.35s;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.35s ease;
     display: flex;
     flex-direction: column;
 }
@@ -809,7 +893,7 @@ body::before {
 .ai-card:hover {
     transform: translateY(-6px);
     border-color: rgba(167, 139, 250, 0.55);
-    box-shadow: 0 12px 40px rgba(167, 139, 250, 0.22), 0 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .ai-card:hover::before {
@@ -1037,15 +1121,15 @@ body::before {
     border-radius: var(--radius);
     padding: 1.85rem;
     border: 1px solid var(--border);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-card);
     height: 100%;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s, box-shadow 0.35s ease;
 }
 
 .skill-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     border-color: var(--border-bright);
-    box-shadow: var(--shadow), var(--shadow-glow);
+    box-shadow: var(--shadow-card-hover);
 }
 
 .skill-card-ai {
@@ -1209,7 +1293,7 @@ body::before {
     right: 1.5rem;
     width: 44px;
     height: 44px;
-    border-radius: 12px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border-bright);
     background: var(--surface-solid);
     color: var(--accent);
