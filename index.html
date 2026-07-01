@@ -15,7 +15,6 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style_portfolio.css">
 </head>
 
@@ -29,16 +28,16 @@
 
     <header class="top-bar">
         <div class="container top-bar-inner">
-            <a href="#" class="brand-mark">
+            <a href="#about" class="brand-mark" data-nav="about">
                 <span class="brand-dot"></span>
                 Tristan P. Fornoles
             </a>
             <nav class="top-nav" aria-label="Main navigation">
-                <a href="#about">About</a>
-                <a href="#ai">AI Skills</a>
-                <a href="#academic">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <a href="#about" data-nav="about"><i class="bi bi-person"></i> About</a>
+                <a href="#ai" data-nav="ai"><i class="bi bi-robot"></i> AI Skills</a>
+                <a href="#academic" data-nav="academic"><i class="bi bi-folder2-open"></i> Projects</a>
+                <a href="#skills" data-nav="skills"><i class="bi bi-stars"></i> Skills</a>
+                <a href="#contact" data-nav="contact"><i class="bi bi-envelope"></i> Contact</a>
             </nav>
             <div class="top-actions">
                 <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle light mode">
@@ -51,18 +50,18 @@
             </div>
         </div>
         <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-            <a href="#about">About</a>
-            <a href="#ai">AI Skills</a>
-            <a href="#academic">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+            <a href="#about" data-nav="about"><i class="bi bi-person"></i> About</a>
+            <a href="#ai" data-nav="ai"><i class="bi bi-robot"></i> AI Skills</a>
+            <a href="#academic" data-nav="academic"><i class="bi bi-folder2-open"></i> Projects</a>
+            <a href="#skills" data-nav="skills"><i class="bi bi-stars"></i> Skills</a>
+            <a href="#contact" data-nav="contact"><i class="bi bi-envelope"></i> Contact</a>
         </nav>
     </header>
 
     <div class="container page-wrap pb-5">
         <div class="row g-4">
 
-            <div class="col-lg-4" data-aos="fade-right">
+            <div class="col-lg-4">
                 <div class="profile-card">
                     <div class="profile-img-container">
                         <img src="A02_tannnzxc/profgit.jpg" alt="Tristan P. Fornoles"
@@ -114,7 +113,7 @@
                             class="btn btn-repo">
                             <i class="bi bi-github me-2"></i>View GitHub Repo
                         </a>
-                        <a href="#contact" class="btn btn-outline-accent">
+                        <a href="#contact" class="btn btn-outline-accent" data-nav="contact">
                             <i class="bi bi-send me-2"></i>Get In Touch
                         </a>
                     </div>
@@ -127,95 +126,123 @@
                 </div>
             </div>
 
-            <div class="col-lg-8">
+            <div class="col-lg-8 main-content">
 
-                <section class="hero-banner mb-4" data-aos="fade-up">
-                    <div class="hero-glow"></div>
-                    <p class="hero-eyebrow">3rd Year IT Student · PUP Sto. Tomas</p>
-                    <h1 class="hero-title">I build with code, data &amp; <span class="gradient-text">AI</span>.</h1>
-                    <p class="hero-sub">
-                        Aspiring IT professional who combines web development, business intelligence, and
-                        AI-assisted workflows to deliver faster, smarter, and more polished results.
-                    </p>
-                    <div class="hero-typed">
-                        Specialized in <span id="typedText" class="typed-highlight"></span><span
-                            class="typed-cursor">|</span>
-                    </div>
-                    <div class="hero-actions">
-                        <a href="#academic" class="btn btn-repo btn-sm-hero">
-                            <i class="bi bi-folder2-open me-2"></i>View Projects
-                        </a>
-                        <a href="#ai" class="btn btn-outline-accent btn-sm-hero">
-                            <i class="bi bi-robot me-2"></i>My AI Skills
-                        </a>
-                    </div>
-                </section>
+                <div class="page-views" id="pageViews">
 
-                <div class="stats-strip" data-aos="fade-up">
-                    <div class="stat-item">
-                        <strong data-count="2">0</strong>
-                        <span>Projects</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong data-count="15" data-suffix="+">0+</strong>
-                        <span>Skills</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>3rd</strong>
-                        <span>Year DIT</span>
-                    </div>
-                    <div class="stat-item stat-ai">
-                        <strong><i class="bi bi-lightning-charge-fill"></i></strong>
-                        <span>AI-Ready</span>
-                    </div>
-                </div>
+                    <div class="page-view active" id="page-about" data-page="about">
+                        <section class="hero-banner mb-4">
+                            <div class="hero-glow"></div>
+                            <p class="hero-eyebrow">3rd Year IT Student · PUP Sto. Tomas</p>
+                            <h1 class="hero-title">I build with code, data &amp; <span class="gradient-text">AI</span>.</h1>
+                            <p class="hero-sub">
+                                Aspiring IT professional who combines web development, business intelligence, and
+                                AI-assisted workflows to deliver faster, smarter, and more polished results.
+                            </p>
+                            <div class="hero-typed">
+                                Specialized in <span id="typedText" class="typed-highlight"></span><span
+                                    class="typed-cursor">|</span>
+                            </div>
+                            <div class="hero-actions">
+                                <a href="#academic" class="btn btn-repo btn-sm-hero" data-nav="academic">
+                                    <i class="bi bi-folder2-open me-2"></i>View Projects
+                                </a>
+                                <a href="#ai" class="btn btn-outline-accent btn-sm-hero" data-nav="ai">
+                                    <i class="bi bi-robot me-2"></i>My AI Skills
+                                </a>
+                            </div>
+                        </section>
 
-                <section id="about" class="mb-5" data-aos="fade-up">
-                    <span class="section-label">Introduction</span>
-                    <h2 class="section-title">About Me</h2>
-                    <div class="info-card about-card">
-                        <p class="lead-highlight mb-3">
-                            Dedicated 3rd-year Information Technology student with a strong drive to create
-                            professional digital solutions — from responsive websites to data-driven dashboards.
-                        </p>
-                        <p class="lead-muted mb-4">
-                            I study at PUP Sto. Tomas Campus and actively apply what I learn through real academic
-                            projects. Beyond traditional IT skills, I integrate modern AI tools into my workflow to
-                            work faster, learn quicker, and deliver higher-quality output — while always reviewing,
-                            testing, and understanding every solution I build.
-                        </p>
-                        <div class="about-highlights">
-                            <div class="highlight-item">
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Builds responsive, user-friendly web interfaces</span>
+                        <div class="stats-strip mb-4">
+                            <div class="stat-item">
+                                <strong data-count="2">0</strong>
+                                <span>Projects</span>
                             </div>
-                            <div class="highlight-item">
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Creates Power BI dashboards for data insights</span>
+                            <div class="stat-item">
+                                <strong data-count="15" data-suffix="+">0+</strong>
+                                <span>Skills</span>
                             </div>
-                            <div class="highlight-item">
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Uses AI responsibly to boost productivity &amp; learning</span>
+                            <div class="stat-item">
+                                <strong>3rd</strong>
+                                <span>Year DIT</span>
                             </div>
-                            <div class="highlight-item">
-                                <i class="bi bi-check-circle-fill"></i>
-                                <span>Comfortable with Git, debugging, and team collaboration</span>
+                            <div class="stat-item stat-ai">
+                                <strong><i class="bi bi-lightning-charge-fill"></i></strong>
+                                <span>AI-Ready</span>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                <section id="ai" class="mb-5 ai-section">
-                    <span class="section-label" data-aos="fade-up">Modern Workflow</span>
-                    <h2 class="section-title" data-aos="fade-up">AI Skills &amp; Productivity</h2>
-                    <p class="section-intro ai-section-intro" data-aos="fade-up">
-                        I don't just know about AI — I actively use it as a professional tool to accelerate development,
-                        improve code quality, and stay current with industry practices. Employers today value candidates
-                        who can leverage AI effectively while maintaining strong technical fundamentals.
-                    </p>
+                        <section class="page-section">
+                            <div class="page-header">
+                                <div class="page-header-icon"><i class="bi bi-person-badge"></i></div>
+                                <div>
+                                    <span class="section-label">Introduction</span>
+                                    <h2 class="section-title mb-0">About Me</h2>
+                                </div>
+                            </div>
+                            <div class="info-card about-card">
+                                <p class="lead-highlight mb-3">
+                                    Dedicated 3rd-year Information Technology student with a strong drive to create
+                                    professional digital solutions — from responsive websites to data-driven dashboards.
+                                </p>
+                                <p class="lead-muted mb-4">
+                                    I study at PUP Sto. Tomas Campus and actively apply what I learn through real academic
+                                    projects. Beyond traditional IT skills, I integrate modern AI tools into my workflow to
+                                    work faster, learn quicker, and deliver higher-quality output — while always reviewing,
+                                    testing, and understanding every solution I build.
+                                </p>
+                                <div class="about-highlights">
+                                    <div class="highlight-item">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Builds responsive, user-friendly web interfaces</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Creates Power BI dashboards for data insights</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Uses AI responsibly to boost productivity &amp; learning</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        <span>Comfortable with Git, debugging, and team collaboration</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quick-nav-cards mt-4">
+                                <a href="#ai" class="quick-nav-card" data-nav="ai">
+                                    <i class="bi bi-robot"></i>
+                                    <span>Explore AI Skills</span>
+                                    <i class="bi bi-arrow-right quick-arrow"></i>
+                                </a>
+                                <a href="#academic" class="quick-nav-card" data-nav="academic">
+                                    <i class="bi bi-folder2-open"></i>
+                                    <span>View My Projects</span>
+                                    <i class="bi bi-arrow-right quick-arrow"></i>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="page-view" id="page-ai" data-page="ai">
+                        <section class="page-section ai-section">
+                            <div class="page-header">
+                                <div class="page-header-icon page-header-icon-ai"><i class="bi bi-robot"></i></div>
+                                <div>
+                                    <span class="section-label">Modern Workflow</span>
+                                    <h2 class="section-title mb-0">AI Skills &amp; Productivity</h2>
+                                </div>
+                            </div>
+                            <p class="section-intro ai-section-intro">
+                                I don't just know about AI — I actively use it as a professional tool to accelerate development,
+                                improve code quality, and stay current with industry practices. Employers today value candidates
+                                who can leverage AI effectively while maintaining strong technical fundamentals.
+                            </p>
 
                     <div class="row g-4 mb-4">
-                        <div class="col-md-6" data-aos="fade-up">
+                        <div class="col-md-6">
                             <div class="ai-card">
                                 <div class="ai-card-top">
                                     <div class="ai-card-icon"><i class="bi bi-terminal"></i></div>
@@ -229,7 +256,7 @@
                                 <span class="ai-card-tag">Cursor · Copilot</span>
                             </div>
                         </div>
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+                        <div class="col-md-6">
                             <div class="ai-card">
                                 <div class="ai-card-top">
                                     <div class="ai-card-icon"><i class="bi bi-chat-square-text"></i></div>
@@ -243,7 +270,7 @@
                                 <span class="ai-card-tag">ChatGPT · Prompts</span>
                             </div>
                         </div>
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="120">
+                        <div class="col-md-6">
                             <div class="ai-card">
                                 <div class="ai-card-top">
                                     <div class="ai-card-icon"><i class="bi bi-search"></i></div>
@@ -257,7 +284,7 @@
                                 <span class="ai-card-tag">Analysis · Debug</span>
                             </div>
                         </div>
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="160">
+                        <div class="col-md-6">
                             <div class="ai-card">
                                 <div class="ai-card-top">
                                     <div class="ai-card-icon"><i class="bi bi-file-earmark-richtext"></i></div>
@@ -273,7 +300,7 @@
                         </div>
                     </div>
 
-                    <div class="info-card ai-tools-card" data-aos="fade-up">
+                    <div class="info-card ai-tools-card">
                         <div class="ai-tools-header">
                             <div class="ai-tools-icon"><i class="bi bi-cpu"></i></div>
                             <div>
@@ -305,13 +332,20 @@
                             understanding, testing, and accountability.
                         </p>
                     </div>
-                </section>
+                        </section>
+                    </div>
 
-                <section id="academic" class="mb-5">
-                    <span class="section-label" data-aos="fade-up">Portfolio</span>
-                    <h2 class="section-title" data-aos="fade-up">Academic Work</h2>
+                    <div class="page-view" id="page-academic" data-page="academic">
+                        <section class="page-section">
+                            <div class="page-header">
+                                <div class="page-header-icon"><i class="bi bi-folder2-open"></i></div>
+                                <div>
+                                    <span class="section-label">Portfolio</span>
+                                    <h2 class="section-title mb-0">Academic Work</h2>
+                                </div>
+                            </div>
                     <div class="row g-4 projects-grid">
-                        <div class="col-md-6" data-aos="zoom-in">
+                        <div class="col-md-6">
                             <div class="info-card project-card project-card-pro">
                                 <div class="project-meta">
                                     <span class="project-badge">Featured</span>
@@ -327,7 +361,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="col-md-6">
                             <div class="info-card project-card project-card-pro project-card-alt">
                                 <div class="project-meta">
                                     <span class="project-badge badge-warm">Live Demo</span>
@@ -343,14 +377,21 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                        </section>
+                    </div>
 
-                <section id="skills" class="mb-5">
-                    <span class="section-label" data-aos="fade-up">Expertise</span>
-                    <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+                    <div class="page-view" id="page-skills" data-page="skills">
+                        <section class="page-section">
+                            <div class="page-header">
+                                <div class="page-header-icon page-header-icon-skills"><i class="bi bi-stars"></i></div>
+                                <div>
+                                    <span class="section-label">Expertise</span>
+                                    <h2 class="section-title mb-0">Technical Skills</h2>
+                                </div>
+                            </div>
                     <div class="row g-4 mb-4">
 
-                        <div class="col-md-6" data-aos="fade-up">
+                        <div class="col-md-6">
                             <div class="skill-card">
                                 <div class="skill-card-header">
                                     <div class="skill-icon dev"><i class="bi bi-code-slash"></i></div>
@@ -365,7 +406,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="80">
+                        <div class="col-md-6">
                             <div class="skill-card skill-card-ai">
                                 <div class="skill-card-header">
                                     <div class="skill-icon ai"><i class="bi bi-robot"></i></div>
@@ -380,7 +421,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="120">
+                        <div class="col-md-6">
                             <div class="skill-card">
                                 <div class="skill-card-header">
                                     <div class="skill-icon bi"><i class="bi bi-bar-chart-line"></i></div>
@@ -394,7 +435,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="160">
+                        <div class="col-md-6">
                             <div class="skill-card">
                                 <div class="skill-card-header">
                                     <div class="skill-icon tools"><i class="bi bi-tools"></i></div>
@@ -409,7 +450,7 @@
                         </div>
                     </div>
 
-                    <div class="info-card skill-levels-card" data-aos="fade-up">
+                    <div class="info-card skill-levels-card">
                         <h5 class="fw-bold mb-4">Proficiency Overview</h5>
                         <div class="skill-level">
                             <div class="skill-level-head">
@@ -440,15 +481,45 @@
                             <div class="skill-bar"><div class="skill-bar-fill sys-bar" data-width="70%"></div></div>
                         </div>
                     </div>
-                </section>
+                        </section>
+                    </div>
 
-                <section id="contact" class="mb-4" data-aos="fade-up">
-                    <span class="section-label">Let's Connect</span>
-                    <h2 class="section-title">Contact Me</h2>
+                    <div class="page-view" id="page-contact" data-page="contact">
+                        <section class="page-section">
+                            <div class="page-header">
+                                <div class="page-header-icon page-header-icon-contact"><i class="bi bi-envelope-heart"></i></div>
+                                <div>
+                                    <span class="section-label">Let's Connect</span>
+                                    <h2 class="section-title mb-0">Contact Me</h2>
+                                </div>
+                            </div>
                     <div class="info-card contact-card">
                         <p class="lead-muted mb-4">
                             Interested in an internship, freelance project, or collaboration? I'd love to hear from you.
                         </p>
+                        <div class="contact-info-grid mb-4">
+                            <div class="contact-info-item">
+                                <i class="bi bi-envelope-fill"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <span>tristan.fornoles09@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="bi bi-geo-alt-fill"></i>
+                                <div>
+                                    <strong>Location</strong>
+                                    <span>Batangas, Philippines</span>
+                                </div>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="bi bi-mortarboard-fill"></i>
+                                <div>
+                                    <strong>Education</strong>
+                                    <span>PUP Sto. Tomas · DIT 3rd Year</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="contact-actions">
                             <a href="mailto:tristan.fornoles09@gmail.com" class="btn btn-repo">
                                 <i class="bi bi-envelope me-2"></i>Send Email
@@ -463,7 +534,10 @@
                             </a>
                         </div>
                     </div>
-                </section>
+                        </section>
+                    </div>
+
+                </div>
 
                 <footer class="site-footer-portfolio">
                     <div class="footer-divider">
@@ -484,10 +558,8 @@
 
     <div class="toast-msg" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 700, once: true, offset: 40 });
-    </script>
+    <div class="page-loader" id="pageLoader" aria-hidden="true"></div>
+
     <script src="portfolio.js"></script>
 </body>
 

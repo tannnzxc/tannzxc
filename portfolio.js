@@ -1,14 +1,26 @@
 (function () {
     const root = document.documentElement;
     const topBar = document.querySelector('.top-bar');
-    const navLinks = document.querySelectorAll('.top-nav a, .mobile-nav a');
-    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('[data-nav]');
+    const pageViews = document.querySelectorAll('.page-view');
     const themeBtn = document.getElementById('themeToggle');
     const menuBtn = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
     const backTop = document.getElementById('backTop');
     const copyEmailBtn = document.getElementById('copyEmail');
     const toast = document.getElementById('toast');
+    const pageLoader = document.getElementById('pageLoader');
+
+    const pageTitles = {
+        about: 'About Me',
+        ai: 'AI Skills',
+        academic: 'Projects',
+        skills: 'Technical Skills',
+        contact: 'Contact'
+    };
+
+    let currentPage = 'about';
+    let countersStarted = false;
 
     function showToast(message) {
         if (!toast) return;
@@ -47,13 +59,13 @@
         menuBtn.querySelector('i').className = open ? 'bi bi-x-lg' : 'bi bi-list';
     });
 
-    mobileNav?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-            mobileNav.classList.remove('open');
+    function closeMobileNav() {
+        mobileNav?.classList.remove('open');
+        if (menuBtn) {
             menuBtn.setAttribute('aria-expanded', 'false');
             menuBtn.querySelector('i').className = 'bi bi-list';
-        });
-    });
+        }
+    }
 
     copyEmailBtn?.addEventListener('click', async () => {
         const email = copyEmailBtn.dataset.email;
@@ -65,35 +77,20 @@
         }
     });
 
-    function onScroll() {
-        const y = window.scrollY;
-        topBar?.classList.toggle('scrolled', y > 24);
-        backTop?.classList.toggle('visible', y > 420);
-
-        let current = '';
-        sections.forEach((section) => {
-            if (window.scrollY >= section.offsetTop - 120) {
-                current = section.getAttribute('id');
-            }
-        });
-
+    function setActiveNav(page) {
         navLinks.forEach((link) => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            const target = link.getAttribute('data-nav') || link.getAttribute('href')?.slice(1);
+            link.classList.toggle('active', target === page);
         });
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    function animateCounters() {
+        if (countersStarted) return;
+        const counters = document.querySelectorAll('#page-about [data-count]');
+        if (!counters.length) return;
+        countersStarted = true;
 
-    backTop?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    const counters = document.querySelectorAll('[data-count]');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target;
+        counters.forEach((el) => {
             const target = parseInt(el.dataset.count, 10);
             const suffix = el.dataset.suffix || '';
             let current = 0;
@@ -108,23 +105,90 @@
                 requestAnimationFrame(tick);
             };
             tick();
-            counterObserver.unobserve(el);
         });
-    }, { threshold: 0.6 });
+    }
 
-    counters.forEach((c) => counterObserver.observe(c));
-
-    const bars = document.querySelectorAll('.skill-bar-fill');
-    const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.width = entry.target.dataset.width;
-                barObserver.unobserve(entry.target);
-            }
+    function animateSkillBars() {
+        document.querySelectorAll('#page-skills .skill-bar-fill').forEach((bar) => {
+            bar.style.width = '0';
+            requestAnimationFrame(() => {
+                bar.style.width = bar.dataset.width;
+            });
         });
-    }, { threshold: 0.4 });
+    }
 
-    bars.forEach((bar) => barObserver.observe(bar));
+    function showPage(page, pushState = true) {
+        const validPages = ['about', 'ai', 'academic', 'skills', 'contact'];
+        if (!validPages.includes(page)) page = 'about';
+
+        if (page === currentPage) return;
+
+        pageLoader?.classList.add('active');
+
+        pageViews.forEach((view) => {
+            const isTarget = view.dataset.page === page;
+            view.classList.toggle('active', isTarget);
+            view.classList.toggle('leaving', view.dataset.page === currentPage && !isTarget);
+        });
+
+        currentPage = page;
+        setActiveNav(page);
+        document.title = `${pageTitles[page]} | Tristan P. Fornoles`;
+
+        if (pushState) {
+            history.pushState({ page }, '', `#${page}`);
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        closeMobileNav();
+
+        setTimeout(() => {
+            pageViews.forEach((view) => view.classList.remove('leaving'));
+            pageLoader?.classList.remove('active');
+
+            if (page === 'about') animateCounters();
+            if (page === 'skills') animateSkillBars();
+        }, 320);
+    }
+
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const page = link.getAttribute('data-nav') || link.getAttribute('href')?.slice(1);
+            if (!page || link.target === '_blank') return;
+            e.preventDefault();
+            showPage(page);
+        });
+    });
+
+    window.addEventListener('popstate', (e) => {
+        const page = e.state?.page || location.hash.slice(1) || 'about';
+        showPage(page, false);
+    });
+
+    function onScroll() {
+        const y = window.scrollY;
+        topBar?.classList.toggle('scrolled', y > 24);
+        backTop?.classList.toggle('visible', y > 320);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    backTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const initialPage = location.hash.slice(1) || 'about';
+    if (initialPage !== 'about') {
+        pageViews.forEach((view) => {
+            view.classList.toggle('active', view.dataset.page === initialPage);
+        });
+        currentPage = '';
+        showPage(initialPage, false);
+    } else {
+        setActiveNav('about');
+        animateCounters();
+    }
 
     const phrases = ['Web Development', 'Data Analytics', 'AI-Assisted Coding', 'Power BI Dashboards'];
     const typedEl = document.getElementById('typedText');
