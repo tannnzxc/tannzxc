@@ -521,11 +521,9 @@ body {
 }
 
 .skeleton-card {
-    height: 280px;
     border-radius: 18px;
-    background: linear-gradient(90deg, var(--slate) 25%, rgba(255,255,255,0.06) 50%, var(--slate) 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.4s infinite;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 @keyframes shimmer {
@@ -1200,6 +1198,261 @@ body {
     }
 }
 
-@media (max-width: 576px) {    .hero-title { font-size: 2.2rem; }
+@media (max-width: 576px) {
+    .hero-title { font-size: 2.2rem; }
     .card-img-wrap { height: 150px; }
 }
+
+.page-view {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.page-view.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-fade-in {
+    transition: opacity 0.4s ease;
+}
+
+.offline-banner {
+    background: linear-gradient(90deg, #92400e, #b45309);
+    color: #fef3c7;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 8px 16px;
+}
+
+.fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(2, 6, 23, 0.65);
+    backdrop-filter: blur(6px);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+
+.product-tag { right: auto; left: 10px; top: auto; bottom: 10px; }
+
+.fav-btn:hover { transform: scale(1.1); background: rgba(200, 149, 108, 0.9); }
+
+.fav-btn.active {
+    background: #ef4444;
+    color: white;
+}
+
+.dietary-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.dietary-tag {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 50px;
+    border: 1px solid transparent;
+}
+
+.tag-dairy { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border-color: rgba(59, 130, 246, 0.25); }
+.tag-vegan { background: rgba(34, 197, 94, 0.15); color: #4ade80; border-color: rgba(34, 197, 94, 0.25); }
+.tag-caffeine { background: rgba(180, 83, 9, 0.15); color: #fbbf24; border-color: rgba(180, 83, 9, 0.25); }
+.tag-gluten-free { background: rgba(168, 85, 247, 0.15); color: #c4b5fd; border-color: rgba(168, 85, 247, 0.25); }
+.tag-nuts { background: rgba(239, 68, 68, 0.12); color: #fca5a5; border-color: rgba(239, 68, 68, 0.2); }
+
+.checkout-input {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: white !important;
+    padding: 10px 14px !important;
+    font-size: 0.9rem;
+}
+
+.checkout-input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px var(--accent-glow) !important;
+}
+
+.checkout-input::placeholder { color: rgba(255, 255, 255, 0.35); }
+
+.promo-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(200, 149, 108, 0.2);
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.promo-message { font-size: 0.75rem; }
+.promo-message.success { color: #4ade80; }
+.promo-message.error { color: #f87171; }
+
+.order-type-pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.order-type-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.order-type-pill input { display: none; }
+
+.order-type-pill i { font-size: 1.4rem; color: var(--accent); }
+
+.order-type-pill.active,
+.order-type-pill:hover {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+
+.checkout-summary {
+    background: rgba(200, 149, 108, 0.1);
+    border: 1px solid rgba(200, 149, 108, 0.25);
+}
+
+.skeleton-card {
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+    background: var(--slate);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skeleton-img {
+    height: 140px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.04) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+.skeleton-line {
+    height: 10px;
+    margin: 10px 12px 0;
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.04) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+.skeleton-line.w-75 { width: 75%; }
+.skeleton-line.w-50 { width: 50%; }
+
+.skeleton-btn {
+    height: 36px;
+    margin: 12px;
+    border-radius: 50px;
+    background: linear-gradient(90deg, rgba(200,149,108,0.15) 25%, rgba(200,149,108,0.3) 50%, rgba(200,149,108,0.15) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+.admin-section { background: var(--dark); min-height: 80vh; }
+
+.admin-card {
+    background: var(--slate);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.admin-table th {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.admin-input {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    min-width: 120px;
+}
+
+.admin-actions { background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.06); }
+
+.receipt-order-num {
+    font-family: var(--font-display);
+    color: var(--accent-dark);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.receipt-printable { font-size: 0.9rem; }
+
+@media print {
+    body * { visibility: hidden; }
+    .receipt-printable, .receipt-printable * { visibility: visible; }
+    .receipt-printable {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 20px;
+        color: #000;
+    }
+    .no-print { display: none !important; }
+    .modal { position: absolute; left: 0; top: 0; }
+}
+
+[data-bs-theme="light"] .checkout-input {
+    background: #fff !important;
+    color: #1e293b !important;
+    border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-bs-theme="light"] .order-type-pill {
+    background: #fff;
+    color: #1e293b;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-bs-theme="light"] .promo-box,
+[data-bs-theme="light"] .checkout-summary {
+    background: #f8f4ef;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-bs-theme="light"] .admin-section { background: #f5f0eb; }
+[data-bs-theme="light"] .admin-card { background: #fff; }
+[data-bs-theme="light"] .admin-input { background: #f8f4ef !important; color: #1e293b !important; }
+
+[data-bs-theme="light"] .tag-dairy { background: rgba(59, 130, 246, 0.1); color: #2563eb; }
+[data-bs-theme="light"] .tag-vegan { background: rgba(34, 197, 94, 0.1); color: #16a34a; }
+[data-bs-theme="light"] .tag-caffeine { background: rgba(180, 83, 9, 0.1); color: #b45309; }
+[data-bs-theme="light"] .tag-gluten-free { background: rgba(168, 85, 247, 0.1); color: #7c3aed; }
+[data-bs-theme="light"] .tag-nuts { background: rgba(239, 68, 68, 0.08); color: #dc2626; }
