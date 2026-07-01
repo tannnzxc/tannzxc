@@ -75,7 +75,7 @@ function startCoffeeApp() {
         { title: "Green Tea", name: "Jasmine Green Tea", price: 115, desc: "Light and fragrant green tea with jasmine notes.", image: "green-tea.jpg", category: "tea", rating: 4.6 },
         { title: "Chai Latte", name: "Spiced Chai Latte", price: 155, desc: "Warming blend of black tea, spices, and steamed milk.", image: "chai-latte.jpg", category: "tea", tag: "bestseller", rating: 4.8 },
         { title: "Chamomile", name: "Calm Chamomile Tea", price: 105, desc: "Soothing herbal infusion perfect for unwinding.", image: "chamomile.jpg", category: "tea", rating: 4.5 },
-        { title: "Iced Matcha Tea", name: "Iced Matcha Green Tea", price: 145, desc: "Refreshing chilled matcha with a clean, grassy finish.", image: "matcha.jpg", category: "tea", rating: 4.7 },
+        { title: "Iced Matcha Tea", name: "Iced Matcha Green Tea", price: 145, desc: "Refreshing chilled matcha with a clean, grassy finish.", image: "iced-matcha.jpg", category: "tea", rating: 4.7 },
 
         { title: "Frozen Lemonade", name: "Zesty Frost Lemonade", price: 140, desc: "Cold-pressed lemons blended with crushed ice.", image: "lemonade-frozen.jpg", category: "juice", rating: 4.6 },
         { title: "Lemonade", name: "Hand-Pressed Lemonade", price: 120, desc: "Pure, chilled lemonade with a bright citrus finish.", image: "lemonade.jpg", category: "juice", rating: 4.5 },
