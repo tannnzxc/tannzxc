@@ -1,177 +1,862 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tannnzxc Store | Detailed Tech Specs</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>iPhone 15 Pro Max | Tannnzxc Store — Product Specs</title>
+    <meta name="description"
+        content="View detailed specifications of the iPhone 15 Pro Max at Tannnzxc Store — a professional product specs showcase.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --glass-bg: rgba(30, 41, 59, 0.7);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --accent-blue: #38bdf8;
+            --bg-deep: #070d18;
+            --bg-mid: #0f1a2e;
+            --surface: rgba(20, 35, 58, 0.82);
+            --surface-solid: #152238;
+            --border: rgba(148, 163, 184, 0.14);
+            --border-bright: rgba(56, 189, 248, 0.35);
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.35);
+            --text: #f1f5f9;
+            --text-muted: #94a3b8;
+            --success: #22c55e;
+            --radius: 24px;
+            --radius-lg: 32px;
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.04);
+            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.45), 0 0 40px rgba(56, 189, 248, 0.12);
+            --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
         }
 
+        * { box-sizing: border-box; }
+
         body {
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            color: #f8fafc;
-            font-family: 'Inter', sans-serif;
+            background: var(--bg-deep);
+            background-image:
+                radial-gradient(ellipse at 80% 0%, rgba(56, 189, 248, 0.14) 0%, transparent 50%),
+                radial-gradient(ellipse at 10% 100%, rgba(99, 102, 241, 0.1) 0%, transparent 45%),
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .store-nav {
+            background: rgba(7, 13, 24, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .brand-logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo span { color: var(--accent); }
+
+        .nav-pill {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .nav-pill:hover {
+            color: var(--text);
+            background: rgba(56, 189, 248, 0.1);
+            border-color: var(--border-bright);
+        }
+
+        .product-hero {
+            padding: 2rem 0 3rem;
         }
 
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 28px;
+            background: var(--surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-bright);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            transition: box-shadow 0.35s ease;
         }
 
-        .product-img-box {
-            background: rgba(15, 23, 42, 0.5);
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
+        .glass-card:hover {
+            box-shadow: var(--shadow-hover);
         }
 
-        .price-badge {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-blue);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+        .product-gallery {
+            background: linear-gradient(160deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.6) 100%);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-card);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-stage {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, #eef2f7 0%, #f8fafc 45%, #e5eaf2 100%);
+            border-radius: 22px;
+            padding: 1.75rem 1.25rem;
+            min-height: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 2px 16px rgba(15, 23, 42, 0.08);
+        }
+
+        .product-gallery img {
+            max-height: 300px;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 12px 24px rgba(15, 23, 42, 0.25));
+            transition: transform 0.4s ease, opacity 0.35s ease;
+        }
+
+        .product-gallery::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+            color: #0f172a;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 50px;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        .product-gallery img.fade-swap {
+            opacity: 0;
+            transform: scale(0.97);
+        }
+
+        .product-gallery:hover img:not(.fade-swap) {
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        .image-pedestal {
+            margin: 0 auto;
+            width: min(100%, 300px);
+            height: 12px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(56, 189, 248, 0.35) 0%, transparent 70%);
+            margin-top: 1rem;
+        }
+
+        .specs-note {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            border-radius: var(--radius);
+            padding: 0.9rem 1.15rem;
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .specs-note i {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .info-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.65rem;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 0.85rem 0.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            box-shadow: var(--shadow-card);
+        }
+
+        .info-item i {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .price-ref-label {
+            font-size: 0.68rem;
             font-weight: 700;
-            padding: 6px 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .price-installment {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+        }
+
+        .thumb-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        #imageLabel {
+            position: relative;
+            z-index: 1;
+            color: var(--text-muted) !important;
+            font-weight: 600;
+        }
+
+        .thumb {
+            width: 68px;
+            height: 68px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            background: linear-gradient(180deg, #eef2f7, #f8fafc);
+            cursor: pointer;
+            overflow: hidden;
+            padding: 5px;
+            transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+
+        .thumb.active,
+        .thumb:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px var(--accent-glow);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             border-radius: 10px;
-            display: inline-block;
+            display: block;
+        }
+
+        .product-info {
+            padding: 0.5rem 0;
+        }
+
+        .product-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: clamp(1.6rem, 4vw, 2.1rem);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stars { color: #fbbf24; font-size: 0.9rem; }
+
+        .rating-text {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .rating-text strong { color: var(--text); }
+
+        .price-block {
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: var(--radius);
+            padding: 1.15rem 1.35rem;
+            margin-bottom: 1.25rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .price-main {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .option-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .color-options,
+        .storage-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .color-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-btn.active {
+            border-color: var(--accent);
+            transform: scale(1.1);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+        }
+
+        .storage-btn {
+            padding: 0.55rem 1rem;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .storage-btn.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--border-bright);
+            color: var(--accent);
+            box-shadow: 0 4px 16px var(--accent-glow);
+        }
+
+        .color-name {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .color-name span { color: var(--text); font-weight: 600; }
+
+        .highlights-section {
+            padding: 2rem 0;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.35rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .highlight-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.35rem;
+            height: 100%;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-bright);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.25rem;
+            margin-bottom: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .highlight-card h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .specs-section {
+            padding: 1rem 0 3rem;
+        }
+
+        .specs-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-card);
         }
 
         .spec-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.85rem;
+        }
+
+        @media (min-width: 768px) {
+            .spec-grid { grid-template-columns: repeat(4, 1fr); }
         }
 
         .spec-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 12px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(15, 23, 42, 0.55);
+            padding: 1rem;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .spec-item:hover {
+            border-color: var(--border-bright);
+            transform: translateY(-3px);
         }
 
         .spec-icon {
-            color: var(--accent-blue);
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            color: var(--accent);
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+            display: block;
         }
 
         .spec-label {
-            color: #94a3b8;
-            font-size: 0.65rem;
+            color: var(--text-muted);
+            font-size: 0.62rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             display: block;
+            margin-bottom: 2px;
         }
 
         .spec-value {
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.88rem;
+            font-weight: 600;
             display: block;
         }
 
-        .student-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-blue);
-            font-weight: 700;
+        .box-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .box-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .box-list li:last-child { border-bottom: none; }
+
+        .box-list i { color: var(--success); }
+
+        .store-footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 767px) {
+            .info-strip { grid-template-columns: 1fr; }
+            .spec-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="navbar pt-5">
-        <div class="container justify-content-center">
-            <span class="navbar-brand text-white fw-bold d-flex align-items-center m-0">
-                <i class="bi bi-cpu-fill me-2 text-info"></i>
-                TANNNZXC <span class="text-info ms-1">STORE</span>
-            </span>
+    <header class="store-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="#" class="brand-logo">
+                <i class="bi bi-cpu-fill text-info"></i>
+                TANNNZXC <span>STORE</span>
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <a href="../index.html" class="nav-pill">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Portfolio
+                </a>
+            </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                
-                <div class="glass-card p-4 shadow-lg">
-                    <div class="product-img-box mb-4 text-center">
-                        <img src="https://cdn.dxomark.com/wp-content/uploads/medias/post-155689/Apple-iPhone-15-Pro-Max_-blue-titanium_featured-image-packshot-review-1024x691.jpg" 
-                             class="img-fluid p-3" alt="iPhone 15 Pro Max" style="max-height: 200px;">
+    <main class="product-hero">
+        <div class="container">
+            <div class="row g-4 g-lg-5 align-items-start">
+                <div class="col-lg-5">
+                    <div class="product-gallery">
+                        <span class="badge-new">Product Specs</span>
+                        <div class="image-stage">
+                            <img id="productImage"
+                                src="images/iphone-blue.jpg"
+                                alt="iPhone 15 Pro Max Blue Titanium">
+                        </div>
+                        <div class="image-pedestal"></div>
+                        <div class="thumb-row">
+                            <div class="thumb" data-img="images/iphone-main.jpg" data-label="Front View">
+                                <img src="images/iphone-main.jpg" alt="Front view">
+                            </div>
+                            <div class="thumb" data-img="images/iphone-back.jpg" data-label="Back View">
+                                <img src="images/iphone-back.jpg" alt="Back view">
+                            </div>
+                            <div class="thumb" data-img="images/iphone-side.jpg" data-label="Side View">
+                                <img src="images/iphone-side.jpg" alt="Side view">
+                            </div>
+                            <div class="thumb" data-img="images/iphone-camera.jpg" data-label="Camera Detail">
+                                <img src="images/iphone-camera.jpg" alt="Camera detail">
+                            </div>
+                            <div class="thumb active" data-img="images/iphone-blue.jpg" data-label="Blue Titanium">
+                                <img src="images/iphone-blue.jpg" alt="Blue titanium">
+                            </div>
+                        </div>
+                        <p class="text-center mt-2 mb-0 small text-secondary" id="imageLabel">Blue Titanium</p>
                     </div>
-
-                    <div class="text-center mb-4">
-                        <div class="student-tag mb-1">Flagship Performance</div>
-                        <h1 class="h3 fw-bold mb-2">iPhone 15 Pro Max</h1>
-                        <div class="price-badge">₱64,799.46</div>
-                    </div>
-
-                    <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
-
-                    <div class="spec-grid">
-                        <div class="spec-item">
-                            <i class="bi bi-cpu spec-icon"></i>
-                            <span class="spec-label">Processor</span>
-                            <span class="spec-value">A17 Pro Chip</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="bi bi-display spec-icon"></i>
-                            <span class="spec-label">Display</span>
-                            <span class="spec-value">6.7" ProMotion</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="bi bi-camera spec-icon"></i>
-                            <span class="spec-label">Main Camera</span>
-                            <span class="spec-value">48MP Triple</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="bi bi-memory spec-icon"></i>
-                            <span class="spec-label">Memory</span>
-                            <span class="spec-value">8GB RAM</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="bi bi-battery-charging spec-icon"></i>
-                            <span class="spec-label">Battery</span>
-                            <span class="spec-value">4441 mAh</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="bi bi-gpu-card spec-icon"></i>
-                            <span class="spec-label">Graphics</span>
-                            <span class="spec-value">6-Core GPU</span>
-                        </div>
-                        <div class="spec-item">
-                            <div class="bi bi-wifi spec-icon"></div>
-                            <span class="spec-label">Connectivity</span>
-                            <span class="spec-value">5G / Wi-Fi 6E</span>
-                        </div>
-                        <div class="spec-item">
-                            <div class="bi bi-water spec-icon"></div>
-                            <span class="spec-label">Durability</span>
-                            <span class="spec-value">IP68 Rated</span>
-                        </div>
-                    </div>
-
                 </div>
 
+                <div class="col-lg-7">
+                    <div class="product-info">
+                        <div class="product-tag">Flagship · Titanium Series · Spec Sheet</div>
+                        <h1 class="product-title">iPhone 15 Pro Max</h1>
+
+                        <div class="rating-row">
+                            <span class="stars">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </span>
+                            <span class="rating-text"><strong>4.8</strong> user rating · <strong>Apple Official Product</strong></span>
+                        </div>
+
+                        <div class="specs-note">
+                            <i class="bi bi-info-circle-fill"></i>
+                            <span>This page is a <strong>product specifications showcase</strong> — browse colors, storage options, and full technical details below.</span>
+                        </div>
+
+                        <p class="text-secondary mb-3" style="font-size:0.92rem;">
+                            The most powerful iPhone ever. Forged in titanium, powered by the A17 Pro chip,
+                            and built for pro-level photography, gaming, and all-day performance.
+                        </p>
+
+                        <div class="price-block">
+                            <div class="price-ref-label">Reference SRP</div>
+                            <div class="price-main" id="priceDisplay">₱94,990</div>
+                            <div class="price-installment" id="priceNote">512GB variant · prices shown for specification reference only</div>
+                        </div>
+
+                        <span class="option-label">Available Colors — <span id="colorLabel">Blue Titanium</span></span>
+                        <div class="color-options">
+                            <button type="button" class="color-btn active" data-color="Blue Titanium"
+                                data-img="images/iphone-blue.jpg"
+                                style="background:#3d4f5f" aria-label="Blue Titanium"></button>
+                            <button type="button" class="color-btn" data-color="Natural Titanium"
+                                data-img="images/iphone-back.jpg"
+                                style="background:#9a8f82" aria-label="Natural Titanium"></button>
+                            <button type="button" class="color-btn" data-color="White Titanium"
+                                data-img="images/iphone-main.jpg"
+                                style="background:#e8e6e3" aria-label="White Titanium"></button>
+                            <button type="button" class="color-btn" data-color="Black Titanium"
+                                data-img="images/iphone-side.jpg"
+                                style="background:#2b2b2e" aria-label="Black Titanium"></button>
+                        </div>
+
+                        <span class="option-label">Storage Capacity</span>
+                        <div class="storage-options">
+                            <button type="button" class="storage-btn" data-storage="256GB" data-price="84990">256GB</button>
+                            <button type="button" class="storage-btn active" data-storage="512GB" data-price="94990">512GB</button>
+                            <button type="button" class="storage-btn" data-storage="1TB" data-price="109990">1TB</button>
+                        </div>
+
+                        <div class="info-strip">
+                            <div class="info-item">
+                                <i class="bi bi-cpu"></i>
+                                A17 Pro Chip
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-camera"></i>
+                                48MP Pro Camera
+                            </div>
+                            <div class="info-item">
+                                <i class="bi bi-gem"></i>
+                                Titanium Body
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer class="text-center py-5">
-        <p class="text-secondary small">© 2026 Tannnzxc Store | Advanced Tech Hub</p>
+    <section class="highlights-section">
+        <div class="container">
+            <h2 class="section-heading">Key Features</h2>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="bi bi-cpu"></i></div>
+                        <h6>A17 Pro Chip</h6>
+                        <p>Industry-leading performance for gaming, editing, and multitasking without compromise.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="bi bi-camera"></i></div>
+                        <h6>Pro Camera System</h6>
+                        <p>48MP main sensor with 5x optical zoom — stunning photos and cinematic 4K video.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="bi bi-gem"></i></div>
+                        <h6>Titanium Design</h6>
+                        <p>Lighter, stronger, and premium — built with aerospace-grade titanium frame.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="highlight-card">
+                        <div class="highlight-icon"><i class="bi bi-usb-c"></i></div>
+                        <h6>USB-C &amp; Action Button</h6>
+                        <p>Faster transfers, universal charging, and a customizable Action button.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specs-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="specs-card">
+                        <h2 class="section-heading">Full Specifications</h2>
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <i class="bi bi-cpu spec-icon"></i>
+                                <span class="spec-label">Processor</span>
+                                <span class="spec-value">Apple A17 Pro</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-display spec-icon"></i>
+                                <span class="spec-label">Display</span>
+                                <span class="spec-value">6.7" Super Retina XDR</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-camera spec-icon"></i>
+                                <span class="spec-label">Camera</span>
+                                <span class="spec-value">48MP Pro System</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-memory spec-icon"></i>
+                                <span class="spec-label">RAM</span>
+                                <span class="spec-value">8GB</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-hdd spec-icon"></i>
+                                <span class="spec-label">Storage</span>
+                                <span class="spec-value" id="storageSpec">512GB</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-battery-charging spec-icon"></i>
+                                <span class="spec-label">Battery</span>
+                                <span class="spec-value">Up to 29 hrs video</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-wifi spec-icon"></i>
+                                <span class="spec-label">Connectivity</span>
+                                <span class="spec-value">5G · Wi-Fi 6E</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-droplet spec-icon"></i>
+                                <span class="spec-label">Durability</span>
+                                <span class="spec-value">IP68 Water Resistant</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-gpu-card spec-icon"></i>
+                                <span class="spec-label">GPU</span>
+                                <span class="spec-value">6-Core Graphics</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-phone spec-icon"></i>
+                                <span class="spec-label">OS</span>
+                                <span class="spec-value">iOS 17+</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-fingerprint spec-icon"></i>
+                                <span class="spec-label">Security</span>
+                                <span class="spec-value">Face ID</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-box spec-icon"></i>
+                                <span class="spec-label">Weight</span>
+                                <span class="spec-value">221 g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="specs-card h-100">
+                        <h2 class="section-heading" style="font-size:1.1rem;">In the Box</h2>
+                        <ul class="box-list">
+                            <li><i class="bi bi-check-circle-fill"></i> iPhone 15 Pro Max</li>
+                            <li><i class="bi bi-check-circle-fill"></i> USB-C Charge Cable</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Documentation</li>
+                            <li><i class="bi bi-check-circle-fill"></i> SIM Ejector Tool</li>
+                        </ul>
+                        <hr style="border-color:var(--border); margin:1.25rem 0;">
+                        <h2 class="section-heading" style="font-size:1.1rem;">Product Overview</h2>
+                        <ul class="box-list">
+                            <li><i class="bi bi-check-circle-fill"></i> Titanium design — lighter &amp; stronger</li>
+                            <li><i class="bi bi-check-circle-fill"></i> ProMotion 120Hz always-on display</li>
+                            <li><i class="bi bi-check-circle-fill"></i> USB-C with faster data transfer</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Customizable Action button</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="store-footer">
+        <p class="mb-1 fw-semibold text-white">© 2026 Tannnzxc Store</p>
+        <p class="mb-0">Product Specifications Showcase · Activity 2 by Tristan P. Fornoles</p>
     </footer>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const priceDisplay = document.getElementById('priceDisplay');
+        const priceNote = document.getElementById('priceNote');
+        const storageSpec = document.getElementById('storageSpec');
+        const colorLabel = document.getElementById('colorLabel');
+        const productImage = document.getElementById('productImage');
+        const imageLabel = document.getElementById('imageLabel');
+
+        function formatPrice(num) {
+            return '₱' + num.toLocaleString('en-PH');
+        }
+
+        function swapImage(src, label) {
+            productImage.classList.add('fade-swap');
+            setTimeout(() => {
+                productImage.src = src;
+                productImage.alt = 'iPhone 15 Pro Max — ' + (label || 'product view');
+                if (label && imageLabel) imageLabel.textContent = label;
+                productImage.classList.remove('fade-swap');
+            }, 180);
+
+            document.querySelectorAll('.thumb').forEach((t) => {
+                t.classList.toggle('active', t.dataset.img === src);
+            });
+        }
+
+        document.querySelectorAll('.storage-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.storage-btn').forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+                const price = parseInt(btn.dataset.price, 10);
+                priceDisplay.textContent = formatPrice(price);
+                storageSpec.textContent = btn.dataset.storage;
+                priceNote.textContent = btn.dataset.storage + ' variant · prices shown for specification reference only';
+            });
+        });
+
+        document.querySelectorAll('.color-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+                colorLabel.textContent = btn.dataset.color;
+                if (btn.dataset.img) swapImage(btn.dataset.img, btn.dataset.color);
+            });
+        });
+
+        document.querySelectorAll('.thumb').forEach((thumb) => {
+            thumb.addEventListener('click', () => {
+                document.querySelectorAll('.thumb').forEach((t) => t.classList.remove('active'));
+                thumb.classList.add('active');
+                swapImage(thumb.dataset.img, thumb.dataset.label);
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
