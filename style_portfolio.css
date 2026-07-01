@@ -55,7 +55,6 @@ body::before {
     z-index: 1;
 }
 
-/* ── Top Bar ── */
 .top-bar {
     background: rgba(6, 15, 30, 0.85);
     backdrop-filter: blur(16px);
@@ -118,7 +117,6 @@ body::before {
     background: rgba(59, 158, 255, 0.12);
 }
 
-/* ── Profile Card ── */
 .profile-card {
     background: var(--surface);
     backdrop-filter: blur(20px);
@@ -269,7 +267,6 @@ body::before {
     letter-spacing: 0.3px;
 }
 
-/* ── Stats Strip ── */
 .stats-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -306,7 +303,6 @@ body::before {
     font-weight: 600;
 }
 
-/* ── Sections ── */
 .section-label {
     display: block;
     font-size: 0.68rem;
@@ -339,7 +335,6 @@ body::before {
     box-shadow: 0 0 12px var(--primary-glow);
 }
 
-/* ── Cards ── */
 .info-card {
     background: var(--surface);
     backdrop-filter: blur(16px);
@@ -407,7 +402,6 @@ body::before {
     gap: 10px;
 }
 
-/* ── Skills ── */
 .skill-card {
     background: var(--surface);
     backdrop-filter: blur(16px);
@@ -479,7 +473,6 @@ body::before {
     font-weight: 600;
 }
 
-/* ── Footer ── */
 .site-footer-portfolio {
     border-top: 1px solid var(--border);
     padding: 2rem 0 1rem;
