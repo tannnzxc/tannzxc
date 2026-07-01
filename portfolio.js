@@ -16,6 +16,7 @@
         ai: 'AI Skills',
         academic: 'Projects',
         skills: 'Technical Skills',
+        resume: 'Resume',
         contact: 'Contact'
     };
 
@@ -118,7 +119,7 @@
     }
 
     function showPage(page, pushState = true) {
-        const validPages = ['about', 'ai', 'academic', 'skills', 'contact'];
+        const validPages = ['about', 'ai', 'academic', 'skills', 'resume', 'contact'];
         if (!validPages.includes(page)) page = 'about';
 
         if (page === currentPage) return;
