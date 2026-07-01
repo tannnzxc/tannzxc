@@ -8,13 +8,23 @@
     <meta name="description" content="The Coffee House — artisan coffee, fresh juices, and handcrafted desserts. Order online with ease.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <div class="announcement-bar">
+        <div class="marquee-track">
+            <span><i class="bi bi-star-fill"></i> Free upsize on your first order this week</span>
+            <span><i class="bi bi-cup-hot"></i> New Nitro Cold Brew & Spanish Latte now available</span>
+            <span><i class="bi bi-clock"></i> Open daily — Mon–Fri 7AM–9PM · Sat–Sun 8AM–10PM</span>
+            <span><i class="bi bi-star-fill"></i> Free upsize on your first order this week</span>
+            <span><i class="bi bi-cup-hot"></i> New Nitro Cold Brew & Spanish Latte now available</span>
+        </div>
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top custom-nav" id="mainNav">
         <div class="container">
@@ -27,6 +37,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
                 <div class="ms-auto d-flex align-items-center gap-3 flex-wrap py-2 py-lg-0">
+                    <span class="shop-status open" id="shop-status"><i class="bi bi-circle-fill"></i> Open Now</span>
                     <div class="theme-toggle-container" onclick="toggleFullWebsiteTheme()" title="Toggle theme">
                         <span id="theme-icon"><i class="bi bi-moon-stars-fill"></i></span>
                     </div>
@@ -46,10 +57,11 @@
     <section id="home-page">
         <header class="hero-section">
             <div class="hero-overlay"></div>
+            <div class="hero-grain"></div>
             <div class="container position-relative hero-content text-center">
                 <span class="hero-badge">Est. 2024 · Sto. Tomas, Batangas</span>
                 <h1 class="hero-title">Crafted Coffee.<br><span class="text-accent">Memorable Moments.</span></h1>
-                <p class="hero-subtitle mx-auto">Premium espresso, refreshing juices, and oven-fresh desserts — made with care, served with warmth.</p>
+                <p class="hero-subtitle mx-auto">Premium espresso, refreshing juices, and oven-fresh desserts — made with care, served with warmth in every cup.</p>
                 <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
                     <button class="btn btn-accent btn-lg px-5 py-3 rounded-pill fw-bold" onclick="showOrderPage()">
                         <i class="bi bi-menu-button-wide me-2"></i>Order Now
@@ -60,7 +72,7 @@
                 </div>
                 <div class="row g-3 justify-content-center hero-stats">
                     <div class="col-4 col-md-3">
-                        <div class="stat-card"><strong>20+</strong><span>Menu Items</span></div>
+                        <div class="stat-card"><strong>50+</strong><span>Menu Items</span></div>
                     </div>
                     <div class="col-4 col-md-3">
                         <div class="stat-card"><strong>100%</strong><span>Fresh Daily</span></div>
@@ -75,21 +87,21 @@
         <section class="features-section py-5">
             <div class="container">
                 <div class="row g-4">
-                    <div class="col-md-4">
+                    <div class="col-md-4 reveal">
                         <div class="feature-card">
                             <div class="feature-icon"><i class="bi bi-flower1"></i></div>
                             <h5>Premium Beans</h5>
                             <p class="text-secondary small mb-0">Ethically sourced Arabica beans, roasted in small batches for rich flavor.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 reveal">
                         <div class="feature-card">
                             <div class="feature-icon"><i class="bi bi-clock-history"></i></div>
                             <h5>Made to Order</h5>
                             <p class="text-secondary small mb-0">Every cup and dessert prepared fresh when you order — never pre-made.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 reveal">
                         <div class="feature-card">
                             <div class="feature-icon"><i class="bi bi-heart-fill"></i></div>
                             <h5>Cozy Experience</h5>
@@ -100,31 +112,104 @@
             </div>
         </section>
 
+        <section class="special-section py-5">
+            <div class="container">
+                <div class="daily-special-card reveal" id="daily-special-card"></div>
+            </div>
+        </section>
+
+        <section class="featured-section py-5">
+            <div class="container">
+                <div class="section-header text-center mb-5 reveal">
+                    <span class="section-label">Fan Favorites</span>
+                    <h2 class="section-title">Bestsellers</h2>
+                    <p class="text-secondary mx-auto" style="max-width:480px">Loved by our regulars — these are the drinks and treats guests keep coming back for.</p>
+                </div>
+                <div class="featured-grid" id="featured-items"></div>
+                <div class="text-center mt-4 reveal">
+                    <button class="btn btn-outline-accent rounded-pill px-5 py-2 fw-semibold" onclick="showOrderPage()">
+                        See Full Menu <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section py-5">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 reveal">
+                        <div class="about-image" style="background-image:url('images/cafe-interior.jpg')"></div>
+                    </div>
+                    <div class="col-lg-6 reveal">
+                        <span class="section-label">Our Story</span>
+                        <h2 class="section-title mb-3">Born from a Love of Coffee</h2>
+                        <p class="text-secondary">The Coffee House started as a small dream in Sto. Tomas — a place where every guest feels at home. We source quality beans, bake fresh pastries every morning, and pour heart into every cup.</p>
+                        <p class="text-secondary">Whether you're grabbing a quick espresso before class or settling in for an afternoon with friends, we're here to make your coffee moment special.</p>
+                        <div class="about-highlights">
+                            <div class="about-stat"><strong>2+</strong><span>Years Serving</span></div>
+                            <div class="about-stat"><strong>5K+</strong><span>Happy Guests</span></div>
+                            <div class="about-stat"><strong>50+</strong><span>Menu Items</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="gallery-section py-5">
             <div class="container">
-                <div class="section-header text-center mb-5">
+                <div class="section-header text-center mb-5 reveal">
                     <span class="section-label">Our Favorites</span>
-                    <h2 class="section-title">Customer Favorites</h2>
+                    <h2 class="section-title">A Taste of What We Serve</h2>
                 </div>
                 <div class="row g-3">
-                    <div class="col-6 col-md-3">
-                        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=500&auto=format&fit=crop&q=80')">
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="gallery-item" style="background-image:url('images/latte.jpg')" onclick="showOrderPage()">
                             <span>Velvety Latte</span>
                         </div>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&auto=format&fit=crop&q=80')">
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="gallery-item" style="background-image:url('images/cappuccino.jpg')" onclick="showOrderPage()">
                             <span>Cappuccino</span>
                         </div>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=80')">
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="gallery-item" style="background-image:url('images/chocolate-cake.jpg')" onclick="showOrderPage()">
                             <span>Chocolate Cake</span>
                         </div>
                     </div>
-                    <div class="col-6 col-md-3">
-                        <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=500&auto=format&fit=crop&q=80')">
+                    <div class="col-6 col-md-3 reveal">
+                        <div class="gallery-item" style="background-image:url('images/iced-latte.jpg')" onclick="showOrderPage()">
                             <span>Iced Latte</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section py-5">
+            <div class="container">
+                <div class="section-header text-center mb-5 reveal">
+                    <span class="section-label">Guest Reviews</span>
+                    <h2 class="section-title">What People Say</h2>
+                </div>
+                <div class="testimonial-track" id="testimonial-track"></div>
+            </div>
+        </section>
+
+        <section class="newsletter-section py-5">
+            <div class="container">
+                <div class="newsletter-card reveal">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-6">
+                            <span class="section-label">Stay Connected</span>
+                            <h3 class="mb-2">Get Coffee Deals & New Menu Alerts</h3>
+                            <p class="text-secondary small mb-0">Subscribe for exclusive promos, seasonal specials, and first dibs on new drinks.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                                <input type="email" id="newsletter-email" class="form-control newsletter-input" placeholder="your@email.com" required>
+                                <button type="submit" class="btn btn-accent rounded-pill px-4 fw-bold">Subscribe</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -137,6 +222,11 @@
                     <div class="col-md-4">
                         <h5 class="footer-brand"><i class="bi bi-cup-hot-fill text-accent me-2"></i>The Coffee House</h5>
                         <p class="text-secondary small">Your neighborhood café for quality coffee, fresh drinks, and sweet treats.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <h6 class="footer-heading">Hours</h6>
@@ -165,21 +255,32 @@
         </div>
 
         <div class="container pb-5">
-            <div class="row justify-content-center mb-4">
-                <div class="col-md-7 col-lg-6">
+            <div class="row justify-content-center mb-4 g-3">
+                <div class="col-md-6 col-lg-5">
                     <div class="search-wrap">
                         <i class="bi bi-search search-icon"></i>
                         <input type="text" id="search-bar" class="form-control search-input"
-                            placeholder="Search coffee, juice, or desserts...">
+                            placeholder="Search coffee, tea, juice, desserts...">
                     </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <select id="sort-select" class="form-select sort-select">
+                        <option value="default">Sort: Featured</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name A–Z</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+            <div class="d-flex justify-content-center flex-wrap gap-2 mb-4 filter-row">
                 <button class="btn btn-outline-accent active filter-btn" onclick="filterMenu('all', event)">All</button>
                 <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('coffee', event)"><i class="bi bi-cup-hot me-1"></i>Coffee</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('tea', event)"><i class="bi bi-cup me-1"></i>Tea</button>
                 <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('juice', event)"><i class="bi bi-droplet me-1"></i>Juice</button>
                 <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('dessert', event)"><i class="bi bi-cake2 me-1"></i>Dessert</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('breakfast', event)"><i class="bi bi-egg-fried me-1"></i>Breakfast</button>
             </div>
 
             <p class="text-center text-secondary small mb-4" id="menu-count-label">Loading menu...</p>
@@ -204,6 +305,10 @@
             </div>
         </div>
     </section>
+
+    <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <i class="bi bi-arrow-up"></i>
+    </button>
 
     <div id="order-toast" class="order-toast" role="alert">
         <span class="toast-icon"><i class="bi bi-check-lg"></i></span>
@@ -270,6 +375,7 @@
             const html = document.documentElement;
             const themeIcon = document.getElementById('theme-icon');
             const searchBar = document.getElementById('search-bar');
+            const sortSelect = document.getElementById('sort-select');
             const currentTheme = html.getAttribute('data-bs-theme');
 
             if (currentTheme === 'dark') {

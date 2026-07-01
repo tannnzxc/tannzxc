@@ -5,6 +5,7 @@ function startCoffeeApp() {
         return;
     }
 
+    const IMAGE_BASE = 'images/';
     const coffeeContainer = document.getElementById('coffee-container');
     const coffeeModalElement = document.getElementById('coffeeModal');
     const coffeeModal = new bootstrap.Modal(coffeeModalElement);
@@ -13,6 +14,8 @@ function startCoffeeApp() {
     const searchBar = document.getElementById('search-bar');
 
     let allItems = [];
+    let currentFilter = 'all';
+    let currentSort = 'default';
     let currentOrder = JSON.parse(localStorage.getItem('coffeeOrder')) || [];
     currentOrder = currentOrder.map(item => ({ ...item, qty: item.qty || 1 }));
 
@@ -26,234 +29,98 @@ function startCoffeeApp() {
         sweetness: ['Normal Sweet', 'Less Sugar', 'No Sugar', 'Extra Honey (+₱15)']
     };
 
-    const drinkLibrary = {
-        "Latte": {
-            name: "Silk Velvety Latte",
-            price: 150,
-            desc: "Our signature espresso softened with silky steamed milk.",
-            image: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=600&auto=format&fit=crop&q=80"
-        },
-        "Caramel Latte": {
-            name: "Golden Caramel Latte",
-            price: 165,
-            desc: "Rich espresso with steamed milk and buttery caramel drizzle.",
-            image: "https://images.unsplash.com/photo-1599398054066-846f28917f38?w=600&auto=format&fit=crop&q=80"
-        },
-        "Macchiato": {
-            name: "Classic Cloud Macchiato",
-            price: 145,
-            desc: "Bold espresso marked with a dollop of velvety foam.",
-            image: "https://images.unsplash.com/photo-1557772611-722dabe20327?w=600&auto=format&fit=crop&q=80"
-        },
-        "Classic Cappuccino": {
-            name: "Classic Cloud Cappuccino",
-            price: 155,
-            desc: "Perfectly balanced layers of espresso, milk, and foam.",
-            image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&auto=format&fit=crop&q=80"
-        },
-        "Matcha Latte": {
-            name: "Ceremonial Matcha Latte",
-            price: 170,
-            desc: "Stone-ground matcha whisked with creamy steamed milk.",
-            image: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=600&auto=format&fit=crop&q=80"
-        },
-        "Svart Te": {
-            name: "Heritage Black Tea",
-            price: 110,
-            desc: "A warm, aromatic black tea brewed to perfection.",
-            image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=80"
-        },
-        "Islatte": {
-            name: "Iced Silk Latte",
-            price: 160,
-            desc: "Chilled espresso and milk poured over crystal ice.",
-            image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80"
-        },
-        "Islatte Mocha": {
-            name: "Iced Dark Cocoa Mocha",
-            price: 175,
-            desc: "Iced latte blended with rich dark chocolate.",
-            image: "https://images.unsplash.com/photo-1642647391072-6a2416f048e5?w=600&auto=format&fit=crop&q=80"
-        },
-        "Frapino Caramel": {
-            name: "Caramel Frost Frapino",
-            price: 185,
-            desc: "Blended iced coffee topped with whipped cream and caramel.",
-            image: "https://images.unsplash.com/photo-1662047102608-a6f2e492411f?w=600&auto=format&fit=crop&q=80"
-        },
-        "Frapino Mocka": {
-            name: "Mocha Frost Frapino",
-            price: 185,
-            desc: "Chocolatey blended coffee with whipped cream on top.",
-            image: "https://images.unsplash.com/photo-1530373239216-42518e6b4063?w=600&auto=format&fit=crop&q=80"
-        },
-        "Flat White": {
-            name: "Velvet Flat White",
-            price: 155,
-            desc: "Double ristretto shots with microfoam steamed milk.",
-            image: "https://images.unsplash.com/photo-1517701603999-fb35f3524741?w=600&auto=format&fit=crop&q=80"
-        },
-        "Caramel Macchiato": {
-            name: "Layered Caramel Macchiato",
-            price: 170,
-            desc: "Vanilla milk layered with espresso and caramel crosshatch.",
-            image: "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?w=600&auto=format&fit=crop&q=80"
-        },
-        "Black": {
-            name: "Midnight Roast Black",
-            price: 120,
-            desc: "A robust and full-bodied classic brew.",
-            image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80"
-        },
-        "Espresso": {
-            name: "Pure Heritage Espresso",
-            price: 100,
-            desc: "A concentrated masterpiece with rich crema.",
-            image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600&auto=format&fit=crop&q=80"
-        },
-        "Americano": {
-            name: "Smooth Heritage Americano",
-            price: 130,
-            desc: "Bold espresso shots gently diluted with hot water.",
-            image: "https://images.unsplash.com/photo-1511920170033-f8396924c10f?w=600&auto=format&fit=crop&q=80"
-        },
-        "Mocha": {
-            name: "Dark Cocoa Fusion Mocha",
-            price: 165,
-            desc: "Marriage of espresso and premium dark chocolate.",
-            image: "https://images.unsplash.com/photo-1572490122748-2d42cdfffecb?w=600&auto=format&fit=crop&q=80"
-        },
-        "Cappuccino": {
-            name: "Classic Cloud Cappuccino",
-            price: 155,
-            desc: "Perfectly balanced layers of espresso, milk, and foam.",
-            image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&auto=format&fit=crop&q=80"
-        },
-        "Cold Brew": {
-            name: "Slow-Drip Cold Brew",
-            price: 145,
-            desc: "Steeped 18 hours for a smooth, low-acid finish.",
-            image: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=600&auto=format&fit=crop&q=80"
-        }
+    const CATEGORY_LABELS = {
+        coffee: 'Coffee',
+        tea: 'Tea',
+        juice: 'Juice',
+        dessert: 'Dessert',
+        breakfast: 'Breakfast'
     };
 
-    const dessertLibrary = [
-        {
-            title: "Croissant",
-            name: "Artisanal Butter Croissant",
-            price: 95,
-            desc: "Flaky, hand-rolled French pastry with golden layers.",
-            image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Muffin",
-            name: "Wild Blueberry Muffin",
-            price: 85,
-            desc: "Tender muffin packed with fresh blueberries.",
-            image: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Donut",
-            name: "Signature Glazed Ring",
-            price: 65,
-            desc: "Classic melt-in-your-mouth glazed yeast donut.",
-            image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Chocolate Cake",
-            name: "Decadent Truffle Slice",
-            price: 180,
-            desc: "Moist chocolate sponge with dark ganache frosting.",
-            image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Cheesecake",
-            name: "NY Classic Cheesecake",
-            price: 195,
-            desc: "Rich cheesecake on a buttery graham cracker crust.",
-            image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Tiramisu",
-            name: "Espresso Tiramisu Cup",
-            price: 175,
-            desc: "Layers of mascarpone, espresso-soaked ladyfingers, and cocoa.",
-            image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Brownie",
-            name: "Fudge Walnut Brownie",
-            price: 120,
-            desc: "Dense chocolate brownie with crunchy walnut pieces.",
-            image: "https://images.unsplash.com/photo-1606313564204-75d0bbf7c063?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Macaron",
-            name: "French Macaron Trio",
-            price: 145,
-            desc: "Delicate almond meringue cookies in assorted flavors.",
-            image: "https://images.unsplash.com/photo-1569860878811-88ee75141022?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Affogato",
-            name: "Affogato al Caffè",
-            price: 165,
-            desc: "Vanilla gelato drowned in a hot double espresso shot.",
-            image: "https://images.unsplash.com/photo-1540331547168-8b63109225b7?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        },
-        {
-            title: "Ice Cream",
-            name: "Vanilla Bean Gelato Scoop",
-            price: 110,
-            desc: "Creamy gelato with real vanilla bean specks.",
-            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80",
-            category: "dessert"
-        }
+    const FALLBACK_IMAGES = {
+        coffee: IMAGE_BASE + 'latte.jpg',
+        tea: IMAGE_BASE + 'green-tea.jpg',
+        juice: IMAGE_BASE + 'lemonade.jpg',
+        dessert: IMAGE_BASE + 'croissant.jpg',
+        breakfast: IMAGE_BASE + 'panini.jpg'
+    };
+
+    const menuData = [
+        { title: "Latte", name: "Silk Velvety Latte", price: 150, desc: "Signature espresso softened with silky steamed milk and microfoam.", image: "latte.jpg", category: "coffee", tag: "bestseller", rating: 4.9 },
+        { title: "Caramel Latte", name: "Golden Caramel Latte", price: 165, desc: "Rich espresso with steamed milk and buttery caramel drizzle.", image: "caramel-latte.jpg", category: "coffee", tag: "bestseller", rating: 4.8 },
+        { title: "Macchiato", name: "Classic Cloud Macchiato", price: 145, desc: "Bold espresso marked with a dollop of velvety foam.", image: "macchiato.jpg", category: "coffee", rating: 4.7 },
+        { title: "Cappuccino", name: "Classic Cloud Cappuccino", price: 155, desc: "Perfectly balanced layers of espresso, milk, and foam.", image: "cappuccino.jpg", category: "coffee", tag: "bestseller", rating: 4.9 },
+        { title: "Matcha Latte", name: "Ceremonial Matcha Latte", price: 170, desc: "Stone-ground matcha whisked with creamy steamed milk.", image: "matcha.jpg", category: "coffee", tag: "new", rating: 4.8 },
+        { title: "Iced Latte", name: "Iced Silk Latte", price: 160, desc: "Chilled espresso and milk poured over crystal ice.", image: "iced-latte.jpg", category: "coffee", tag: "bestseller", rating: 4.8 },
+        { title: "Iced Mocha", name: "Iced Dark Cocoa Mocha", price: 175, desc: "Iced latte blended with rich dark chocolate.", image: "iced-mocha.jpg", category: "coffee", rating: 4.7 },
+        { title: "Frapino Caramel", name: "Caramel Frost Frapino", price: 185, desc: "Blended iced coffee topped with whipped cream and caramel.", image: "frapino-caramel.jpg", category: "coffee", rating: 4.6 },
+        { title: "Frapino Mocha", name: "Mocha Frost Frapino", price: 185, desc: "Chocolatey blended coffee with whipped cream on top.", image: "frapino-mocha.jpg", category: "coffee", rating: 4.6 },
+        { title: "Flat White", name: "Velvet Flat White", price: 155, desc: "Double ristretto shots with microfoam steamed milk.", image: "flat-white.jpg", category: "coffee", rating: 4.8 },
+        { title: "Caramel Macchiato", name: "Layered Caramel Macchiato", price: 170, desc: "Vanilla milk layered with espresso and caramel crosshatch.", image: "caramel-macchiato.jpg", category: "coffee", tag: "bestseller", rating: 4.9 },
+        { title: "Black Coffee", name: "Midnight Roast Black", price: 120, desc: "A robust and full-bodied classic brew.", image: "black-coffee.jpg", category: "coffee", rating: 4.5 },
+        { title: "Espresso", name: "Pure Heritage Espresso", price: 100, desc: "A concentrated masterpiece with rich crema.", image: "espresso.jpg", category: "coffee", rating: 4.7 },
+        { title: "Americano", name: "Smooth Heritage Americano", price: 130, desc: "Bold espresso shots gently diluted with hot water.", image: "americano.jpg", category: "coffee", rating: 4.6 },
+        { title: "Mocha", name: "Dark Cocoa Fusion Mocha", price: 165, desc: "Marriage of espresso and premium dark chocolate.", image: "mocha.jpg", category: "coffee", rating: 4.8 },
+        { title: "Cold Brew", name: "Slow-Drip Cold Brew", price: 145, desc: "Steeped 18 hours for a smooth, low-acid finish.", image: "cold-brew.jpg", category: "coffee", tag: "bestseller", rating: 4.8 },
+        { title: "Spanish Latte", name: "Creamy Spanish Latte", price: 175, desc: "Espresso with condensed milk — sweet, bold, and indulgent.", image: "spanish-latte.jpg", category: "coffee", tag: "new", rating: 4.9 },
+        { title: "Cortado", name: "Balanced Cortado", price: 140, desc: "Equal parts espresso and warm milk in a small glass.", image: "cortado.jpg", category: "coffee", rating: 4.7 },
+        { title: "Pour Over", name: "Hand Pour Over", price: 155, desc: "Single-origin beans brewed by hand for clarity and aroma.", image: "pour-over.jpg", category: "coffee", rating: 4.8 },
+        { title: "Nitro Cold Brew", name: "Nitro Cold Brew", price: 195, desc: "Velvety nitrogen-infused cold brew with a cascading finish.", image: "nitro-cold-brew.jpg", category: "coffee", tag: "new", rating: 4.9 },
+        { title: "Vietnamese Coffee", name: "Saigon Drip Coffee", price: 160, desc: "Strong dark roast over sweetened condensed milk.", image: "vietnamese-coffee.jpg", category: "coffee", rating: 4.8 },
+        { title: "White Mocha", name: "White Chocolate Mocha", price: 175, desc: "Espresso with white chocolate and steamed milk.", image: "white-mocha.jpg", category: "coffee", rating: 4.7 },
+        { title: "Honey Lavender Latte", name: "Honey Lavender Latte", price: 180, desc: "Floral lavender syrup with wild honey and espresso.", image: "honey-latte.jpg", category: "coffee", tag: "new", rating: 4.8 },
+        { title: "Hot Chocolate", name: "Belgian Hot Chocolate", price: 150, desc: "Rich cocoa with steamed milk and whipped cream.", image: "hot-chocolate.jpg", category: "coffee", rating: 4.7 },
+
+        { title: "Black Tea", name: "Heritage Black Tea", price: 110, desc: "A warm, aromatic black tea brewed to perfection.", image: "black-tea.jpg", category: "tea", rating: 4.5 },
+        { title: "Green Tea", name: "Jasmine Green Tea", price: 115, desc: "Light and fragrant green tea with jasmine notes.", image: "green-tea.jpg", category: "tea", rating: 4.6 },
+        { title: "Chai Latte", name: "Spiced Chai Latte", price: 155, desc: "Warming blend of black tea, spices, and steamed milk.", image: "chai-latte.jpg", category: "tea", tag: "bestseller", rating: 4.8 },
+        { title: "Chamomile", name: "Calm Chamomile Tea", price: 105, desc: "Soothing herbal infusion perfect for unwinding.", image: "chamomile.jpg", category: "tea", rating: 4.5 },
+        { title: "Iced Matcha Tea", name: "Iced Matcha Green Tea", price: 145, desc: "Refreshing chilled matcha with a clean, grassy finish.", image: "matcha.jpg", category: "tea", rating: 4.7 },
+
+        { title: "Frozen Lemonade", name: "Zesty Frost Lemonade", price: 140, desc: "Cold-pressed lemons blended with crushed ice.", image: "lemonade-frozen.jpg", category: "juice", rating: 4.6 },
+        { title: "Lemonade", name: "Hand-Pressed Lemonade", price: 120, desc: "Pure, chilled lemonade with a bright citrus finish.", image: "lemonade.jpg", category: "juice", rating: 4.5 },
+        { title: "Orange Juice", name: "Fresh Squeezed Orange", price: 130, desc: "Sweet and tangy juice from ripe Valencia oranges.", image: "orange-juice.jpg", category: "juice", rating: 4.6 },
+        { title: "Mango Smoothie", name: "Tropical Mango Smoothie", price: 155, desc: "Blended ripe mangoes with yogurt and honey.", image: "mango-smoothie.jpg", category: "juice", tag: "bestseller", rating: 4.8 },
+        { title: "Berry Blast", name: "Mixed Berry Smoothie", price: 165, desc: "Strawberry, blueberry, and raspberry blend.", image: "berry-smoothie.jpg", category: "juice", tag: "new", rating: 4.7 },
+        { title: "Watermelon Cooler", name: "Watermelon Mint Cooler", price: 135, desc: "Fresh watermelon juice with a hint of mint.", image: "watermelon.jpg", category: "juice", rating: 4.6 },
+        { title: "Avocado Smoothie", name: "Creamy Avocado Smoothie", price: 170, desc: "Silky avocado blended with milk and condensed cream.", image: "avocado-smoothie.jpg", category: "juice", rating: 4.7 },
+
+        { title: "Croissant", name: "Artisanal Butter Croissant", price: 95, desc: "Flaky, hand-rolled French pastry with golden layers.", image: "croissant.jpg", category: "dessert", tag: "bestseller", rating: 4.8 },
+        { title: "Muffin", name: "Wild Blueberry Muffin", price: 85, desc: "Tender muffin packed with fresh blueberries.", image: "muffin.jpg", category: "dessert", rating: 4.5 },
+        { title: "Donut", name: "Signature Glazed Ring", price: 65, desc: "Classic melt-in-your-mouth glazed yeast donut.", image: "donut.jpg", category: "dessert", rating: 4.6 },
+        { title: "Chocolate Cake", name: "Decadent Truffle Slice", price: 180, desc: "Moist chocolate sponge with dark ganache frosting.", image: "chocolate-cake.jpg", category: "dessert", tag: "bestseller", rating: 4.9 },
+        { title: "Cheesecake", name: "NY Classic Cheesecake", price: 195, desc: "Rich cheesecake on a buttery graham cracker crust.", image: "cheesecake.jpg", category: "dessert", rating: 4.8 },
+        { title: "Tiramisu", name: "Espresso Tiramisu Cup", price: 175, desc: "Mascarpone, espresso-soaked ladyfingers, and cocoa.", image: "tiramisu.jpg", category: "dessert", rating: 4.8 },
+        { title: "Brownie", name: "Fudge Walnut Brownie", price: 120, desc: "Dense chocolate brownie with crunchy walnut pieces.", image: "brownie.jpg", category: "dessert", rating: 4.7 },
+        { title: "Macaron", name: "French Macaron Trio", price: 145, desc: "Delicate almond meringue cookies in assorted flavors.", image: "macaron.jpg", category: "dessert", rating: 4.7 },
+        { title: "Affogato", name: "Affogato al Caffè", price: 165, desc: "Vanilla gelato drowned in a hot double espresso shot.", image: "affogato.jpg", category: "dessert", tag: "new", rating: 4.9 },
+        { title: "Gelato", name: "Vanilla Bean Gelato Scoop", price: 110, desc: "Creamy gelato with real vanilla bean specks.", image: "gelato.jpg", category: "dessert", rating: 4.6 },
+        { title: "Cinnamon Roll", name: "Warm Cinnamon Roll", price: 125, desc: "Soft roll with cinnamon sugar and cream cheese glaze.", image: "cinnamon-roll.jpg", category: "dessert", tag: "new", rating: 4.8 },
+        { title: "Cookie", name: "Chocolate Chip Cookie", price: 75, desc: "Baked fresh daily with Belgian chocolate chips.", image: "cookie.jpg", category: "dessert", rating: 4.5 },
+        { title: "Banana Bread", name: "Homestyle Banana Bread", price: 90, desc: "Moist loaf with ripe bananas and walnut crunch.", image: "banana-bread.jpg", category: "dessert", rating: 4.6 },
+        { title: "Cupcake", name: "Red Velvet Cupcake", price: 105, desc: "Velvety sponge topped with cream cheese frosting.", image: "cupcake.jpg", category: "dessert", rating: 4.7 },
+
+        { title: "Panini", name: "Ham & Cheese Panini", price: 185, desc: "Toasted sourdough with ham, mozzarella, and pesto.", image: "panini.jpg", category: "breakfast", tag: "bestseller", rating: 4.7 },
+        { title: "Avocado Toast", name: "Smashed Avocado Toast", price: 175, desc: "Sourdough with avocado, cherry tomatoes, and feta.", image: "avocado-toast.jpg", category: "breakfast", tag: "new", rating: 4.8 },
+        { title: "French Toast", name: "Cinnamon French Toast", price: 165, desc: "Thick brioche with maple syrup and powdered sugar.", image: "french-toast.jpg", category: "breakfast", rating: 4.7 },
+        { title: "Egg Sandwich", name: "Egg & Cheese Sandwich", price: 155, desc: "Fluffy eggs, cheddar, and spinach on a brioche bun.", image: "egg-sandwich.jpg", category: "breakfast", rating: 4.6 }
     ];
 
-    const juiceItems = [
-        {
-            title: "Frozen Lemonade",
-            name: "Zesty Frost Lemonade",
-            price: 140,
-            desc: "Cold-pressed lemons blended with crushed ice.",
-            image: "https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&auto=format&fit=crop&q=80",
-            category: "juice"
-        },
-        {
-            title: "Lemonade",
-            name: "Hand-Pressed Lemonade",
-            price: 120,
-            desc: "Pure, chilled lemonade with a bright citrus finish.",
-            image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80",
-            category: "juice"
-        },
-        {
-            title: "Orange Juice",
-            name: "Fresh Squeezed Orange",
-            price: 130,
-            desc: "Sweet and tangy juice from ripe Valencia oranges.",
-            image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=600&auto=format&fit=crop&q=80",
-            category: "juice"
-        },
-        {
-            title: "Mango Smoothie",
-            name: "Tropical Mango Smoothie",
-            price: 155,
-            desc: "Blended ripe mangoes with yogurt and honey.",
-            image: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=600&auto=format&fit=crop&q=80",
-            category: "juice"
-        }
+    const testimonials = [
+        { name: "Maria S.", role: "Regular Guest", text: "Best latte in Sto. Tomas! The cozy vibe makes it my go-to study spot every weekend.", stars: 5 },
+        { name: "James R.", role: "Coffee Enthusiast", text: "Their cold brew is incredibly smooth. I love the Nitro — it feels like a premium café experience.", stars: 5 },
+        { name: "Angelica T.", role: "DIT Student", text: "Affordable prices, beautiful presentation, and the desserts are always fresh. Highly recommend!", stars: 5 },
+        { name: "Carlo M.", role: "Weekend Visitor", text: "The Spanish Latte is a must-try. Warm staff, great music, and the perfect place to unwind.", stars: 5 }
     ];
+
+    function img(path) {
+        return IMAGE_BASE + path;
+    }
+
+    function getItemImage(item) {
+        if (item.image) return img(item.image);
+        return FALLBACK_IMAGES[item.category] || FALLBACK_IMAGES.coffee;
+    }
 
     function showToast(title, message) {
         const toast = document.getElementById('order-toast');
@@ -283,31 +150,32 @@ function startCoffeeApp() {
         }
         saveAndUpdate();
     }
-    const CATEGORY_LABELS = {
-        coffee: 'Coffee',
-        juice: 'Juice',
-        dessert: 'Dessert'
-    };
 
-    const FALLBACK_IMAGES = {
-        coffee: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&auto=format&fit=crop&q=80',
-        juice: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
-        dessert: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&auto=format&fit=crop&q=80'
-    };
-
-    function getItemImage(item) {
-        if (item.image && !item.image.includes('example.com')) return item.image;
-        return FALLBACK_IMAGES[item.category] || FALLBACK_IMAGES.coffee;
+    function sortItems(items) {
+        const list = [...items];
+        switch (currentSort) {
+            case 'price-low': return list.sort((a, b) => a.price - b.price);
+            case 'price-high': return list.sort((a, b) => b.price - a.price);
+            case 'name': return list.sort((a, b) => (a.name || a.title).localeCompare(b.name || b.title));
+            case 'rating': return list.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+            default: return list;
+        }
     }
 
-    const coffeeMenu = Object.entries(drinkLibrary).map(([title, info]) => ({
-        title,
-        ...info,
-        category: 'coffee'
-    }));
+    function getFilteredItems() {
+        let items = currentFilter === 'all' ? allItems : allItems.filter(i => i.category === currentFilter);
+        const term = searchBar ? searchBar.value.toLowerCase().trim() : '';
+        if (term) {
+            items = items.filter(item => {
+                const label = `${item.title || ''} ${item.name || ''} ${item.desc || ''}`.toLowerCase();
+                return label.includes(term);
+            });
+        }
+        return sortItems(items);
+    }
 
     function initMenu() {
-        allItems = [...coffeeMenu, ...juiceItems, ...dessertLibrary].map(item => ({
+        allItems = menuData.map(item => ({
             ...item,
             image: getItemImage(item)
         }));
@@ -316,18 +184,35 @@ function startCoffeeApp() {
         if (loader) loader.style.display = 'none';
 
         updateMenuCountLabel(allItems.length);
-        renderItems(allItems);
+        renderItems(getFilteredItems());
+        renderFeaturedItems();
+        renderDailySpecial();
+        initTestimonials();
+        updateShopStatus();
+        initScrollEffects();
     }
 
     function updateMenuCountLabel(count) {
         const label = document.getElementById('menu-count-label');
         if (label) label.textContent = `Showing ${count} handcrafted items`;
     }
+
+    function renderTagBadge(tag) {
+        if (!tag) return '';
+        const labels = { bestseller: 'Bestseller', new: 'New' };
+        return `<span class="product-tag tag-${tag}">${labels[tag] || tag}</span>`;
+    }
+
+    function renderRating(rating) {
+        if (!rating) return '';
+        return `<span class="card-rating"><i class="bi bi-star-fill"></i> ${rating}</span>`;
+    }
+
     function renderItems(items) {
         updateMenuCountLabel(items.length);
         coffeeContainer.innerHTML = '';
         if (items.length === 0) {
-            coffeeContainer.innerHTML = '<div class="col-12 text-center text-muted py-5"><i class="bi bi-search display-6 d-block mb-2 opacity-50"></i>No items found. Try a different search.</div>';
+            coffeeContainer.innerHTML = '<div class="col-12 text-center text-muted py-5"><i class="bi bi-search display-6 d-block mb-2 opacity-50"></i>No items found. Try a different search or filter.</div>';
             return;
         }
 
@@ -337,16 +222,20 @@ function startCoffeeApp() {
             const catLabel = CATEGORY_LABELS[item.category] || 'Item';
             const fallback = FALLBACK_IMAGES[item.category] || FALLBACK_IMAGES.coffee;
             const col = document.createElement('div');
-            col.className = 'col-6 col-md-4 col-lg-3 mb-4';
+            col.className = 'col-6 col-md-4 col-lg-3 mb-4 menu-card-col';
             col.innerHTML = `
                 <div class="card h-100 coffee-card text-white border-0 shadow-sm">
                     <div class="card-img-wrap">
                         <img src="${item.image}" alt="${info.name}"
                              onerror="this.onerror=null;this.src='${fallback}'" loading="lazy">
                         <span class="category-badge">${catLabel}</span>
+                        ${renderTagBadge(item.tag)}
                     </div>
                     <div class="card-body d-flex flex-column p-3">
-                        <h6 class="fw-bold mb-1" style="font-size: 0.9rem;">${info.name}</h6>
+                        <div class="d-flex justify-content-between align-items-start gap-1 mb-1">
+                            <h6 class="fw-bold mb-0 card-title-name">${info.name}</h6>
+                            ${renderRating(item.rating)}
+                        </div>
                         <p class="card-desc">${info.desc}</p>
                         <p class="text-accent fw-bold mb-3 small">₱${info.price.toFixed(2)}</p>
                         <button class="btn btn-accent mt-auto rounded-pill fw-bold py-2 add-order-btn">
@@ -369,8 +258,107 @@ function startCoffeeApp() {
         return {
             name: item.name || item.title,
             price: item.price || 140,
-            desc: item.desc || item.description || "A delicious selection from our menu."
+            desc: item.desc || "A delicious selection from our menu."
         };
+    }
+
+    function getFeaturedItems() {
+        return allItems.filter(i => i.tag === 'bestseller').slice(0, 8);
+    }
+
+    function renderFeaturedItems() {
+        const container = document.getElementById('featured-items');
+        if (!container) return;
+        const featured = getFeaturedItems();
+        container.innerHTML = featured.map(item => {
+            const fallback = FALLBACK_IMAGES[item.category] || FALLBACK_IMAGES.coffee;
+            return `
+                <div class="featured-card" onclick="showOrderPage()">
+                    <div class="featured-img" style="background-image:url('${item.image}')"></div>
+                    <div class="featured-info">
+                        <span class="featured-cat">${CATEGORY_LABELS[item.category]}</span>
+                        <h6>${item.name}</h6>
+                        <span class="featured-price">₱${item.price.toFixed(2)}</span>
+                    </div>
+                </div>`;
+        }).join('');
+    }
+
+    function renderDailySpecial() {
+        const el = document.getElementById('daily-special-card');
+        if (!el || allItems.length === 0) return;
+        const day = new Date().getDate();
+        const special = allItems.filter(i => i.tag === 'bestseller' || i.tag === 'new')[day % 12] || allItems[0];
+        el.innerHTML = `
+            <div class="special-img" style="background-image:url('${special.image}')"></div>
+            <div class="special-body">
+                <span class="special-badge"><i class="bi bi-lightning-fill"></i> Today's Special</span>
+                <h4>${special.name}</h4>
+                <p>${special.desc}</p>
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                    <span class="special-price">₱${special.price.toFixed(2)} <small class="text-decoration-line-through text-secondary ms-1">₱${(special.price + 25).toFixed(2)}</small></span>
+                    <button class="btn btn-accent rounded-pill px-4" onclick="showOrderPage()">Order Now</button>
+                </div>
+            </div>`;
+    }
+
+    function initTestimonials() {
+        const track = document.getElementById('testimonial-track');
+        if (!track) return;
+        track.innerHTML = testimonials.map(t => `
+            <div class="testimonial-card">
+                <div class="testimonial-stars">${'★'.repeat(t.stars)}</div>
+                <p class="testimonial-text">"${t.text}"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">${t.name.charAt(0)}</div>
+                    <div>
+                        <strong>${t.name}</strong>
+                        <small class="d-block text-secondary">${t.role}</small>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function updateShopStatus() {
+        const badge = document.getElementById('shop-status');
+        if (!badge) return;
+        const now = new Date();
+        const day = now.getDay();
+        const hour = now.getHours();
+        const isWeekend = day === 0 || day === 6;
+        const openHour = isWeekend ? 8 : 7;
+        const closeHour = isWeekend ? 22 : 21;
+        const isOpen = hour >= openHour && hour < closeHour;
+        badge.className = 'shop-status ' + (isOpen ? 'open' : 'closed');
+        badge.innerHTML = isOpen
+            ? '<i class="bi bi-circle-fill"></i> Open Now'
+            : '<i class="bi bi-circle-fill"></i> Closed — Opens ' + (isWeekend ? '8' : '7') + ' AM';
+    }
+
+    function initScrollEffects() {
+        const nav = document.getElementById('mainNav');
+        const backTop = document.getElementById('back-to-top');
+        const revealEls = document.querySelectorAll('.reveal');
+
+        window.addEventListener('scroll', () => {
+            if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+            if (backTop) backTop.classList.toggle('visible', window.scrollY > 400);
+        });
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(el => observer.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('revealed'));
+        }
     }
 
     function getModalQuantity() {
@@ -412,7 +400,7 @@ function startCoffeeApp() {
     function openOrderModal(item, info, triggerBtn) {
         const modalBody = document.querySelector('#coffeeModal .modal-body');
         const headerImg = document.getElementById('modalHeaderImg');
-        const isDrink = item.category === 'coffee' || item.category === 'juice';
+        const isDrink = ['coffee', 'tea', 'juice'].includes(item.category);
 
         headerImg.style.backgroundImage = `url(${item.image})`;
 
@@ -491,7 +479,7 @@ function startCoffeeApp() {
                     : document.getElementById('sweetness-select').value;
                 orderDetails = `${sizeLabel} | ${opt}`;
             } else {
-                orderDetails = "Fresh Dessert";
+                orderDetails = item.category === 'breakfast' ? 'Fresh Breakfast' : 'Fresh Dessert';
             }
 
             addToOrder(info.name, orderDetails, finalPrice, qty);
@@ -526,12 +514,16 @@ function startCoffeeApp() {
     };
 
     window.filterMenu = (cat, evt) => {
+        currentFilter = cat;
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        const target = evt?.target || window.event?.target;
+        const target = evt?.currentTarget || evt?.target || window.event?.target;
         if (target) target.classList.add('active');
+        renderItems(getFilteredItems());
+    };
 
-        const filtered = cat === 'all' ? allItems : allItems.filter(i => i.category === cat);
-        renderItems(filtered);
+    window.sortMenu = (sort) => {
+        currentSort = sort;
+        renderItems(getFilteredItems());
     };
 
     window.checkout = () => {
@@ -579,15 +571,22 @@ function startCoffeeApp() {
         window.scrollTo(0, 0);
     };
 
+    window.subscribeNewsletter = (e) => {
+        e.preventDefault();
+        const input = document.getElementById('newsletter-email');
+        if (input && input.value.trim()) {
+            showToast('Welcome!', 'You\'re subscribed to our coffee updates.');
+            input.value = '';
+        }
+    };
+
     if (searchBar) {
-        searchBar.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            const filtered = allItems.filter(item => {
-                const label = `${item.title || ''} ${item.name || ''}`.toLowerCase();
-                return label.includes(term);
-            });
-            renderItems(filtered);
-        });
+        searchBar.addEventListener('input', () => renderItems(getFilteredItems()));
+    }
+
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => window.sortMenu(e.target.value));
     }
 
     function saveAndUpdate() {
