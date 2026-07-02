@@ -118,6 +118,24 @@
         });
     }
 
+    function animateCertBars() {
+        document.querySelectorAll('#page-resume .cert-progress-fill').forEach((bar) => {
+            bar.style.width = '0';
+            requestAnimationFrame(() => {
+                bar.style.width = bar.dataset.certWidth;
+            });
+        });
+    }
+
+    function animateTerminal() {
+        const outputs = document.querySelectorAll('#page-about [data-terminal-out]');
+        if (!outputs.length) return;
+        outputs.forEach((el) => el.classList.remove('terminal-visible'));
+        outputs.forEach((el, i) => {
+            setTimeout(() => el.classList.add('terminal-visible'), 280 + i * 220);
+        });
+    }
+
     function showPage(page, pushState = true) {
         const validPages = ['about', 'ai', 'academic', 'skills', 'resume', 'contact'];
         if (!validPages.includes(page)) page = 'about';
@@ -147,8 +165,12 @@
             pageViews.forEach((view) => view.classList.remove('leaving'));
             pageLoader?.classList.remove('active');
 
-            if (page === 'about') animateCounters();
+            if (page === 'about') {
+                animateCounters();
+                animateTerminal();
+            }
             if (page === 'skills') animateSkillBars();
+            if (page === 'resume') animateCertBars();
         }, 320);
     }
 
@@ -189,6 +211,7 @@
     } else {
         setActiveNav('about');
         animateCounters();
+        animateTerminal();
     }
 
     const phrases = ['Web Development', 'Data Analytics', 'Learning AI Tools', 'Power BI Dashboards'];
