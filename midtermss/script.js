@@ -602,6 +602,8 @@ function startCoffeeApp() {
 
         if (!name) { alert('Please enter your name.'); return; }
         if (!phone) { alert('Please enter your contact number.'); return; }
+        if (!/^\d+$/.test(phone)) { alert('Contact number must contain numbers only.'); return; }
+        if (phone.length < 10 || phone.length > 11) { alert('Please enter a valid contact number (10–11 digits).'); return; }
 
         const { subtotal, discount, total } = getOrderTotals();
         const orderNum = generateOrderNumber();
@@ -709,6 +711,21 @@ function startCoffeeApp() {
 
     if (searchBar) searchBar.addEventListener('input', () => renderItems(getFilteredItems()));
     document.getElementById('sort-select')?.addEventListener('change', (e) => window.sortMenu(e.target.value));
+
+    const phoneInput = document.getElementById('customer-phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+        });
+        phoneInput.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text') || '';
+            phoneInput.value = text.replace(/\D/g, '').slice(0, 11);
+        });
+        phoneInput.addEventListener('keypress', (e) => {
+            if (!/\d/.test(e.key)) e.preventDefault();
+        });
+    }
 
     function saveAndUpdate() {
         localStorage.setItem('coffeeOrder', JSON.stringify(currentOrder));
