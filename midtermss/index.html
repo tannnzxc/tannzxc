@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Coffee House | Premium Brews & Desserts</title>
-    <meta name="description" content="The Coffee House — artisan coffee, fresh juices, and handcrafted desserts. Order online with ease.">
+    <meta name="description"
+        content="The Coffee House — artisan coffee, fresh juices, and handcrafted desserts. Order online with ease.">
     <meta name="theme-color" content="#c8956c">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/latte.jpg" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -45,8 +48,10 @@
                         <span id="theme-icon"><i class="bi bi-moon-stars-fill"></i></span>
                     </div>
                     <div class="d-flex gap-1 gap-md-3">
-                        <a href="#" class="nav-link text-white fw-semibold" onclick="showHomePage(); return false;">Home</a>
-                        <a href="#" class="nav-link text-white fw-semibold" onclick="showOrderPage(); return false;">Menu</a>
+                        <a href="#" class="nav-link text-white fw-semibold"
+                            onclick="showHomePage(); return false;">Home</a>
+                        <a href="#" class="nav-link text-white fw-semibold"
+                            onclick="showOrderPage(); return false;">Menu</a>
                     </div>
                     <button class="btn btn-accent btn-sm rounded-pill px-3 d-none d-lg-flex align-items-center gap-2"
                         data-bs-toggle="modal" data-bs-target="#orderSummaryModal" id="nav-cart-btn">
@@ -68,12 +73,14 @@
             <div class="container position-relative hero-content text-center">
                 <span class="hero-badge">Est. 2024 · Sto. Tomas, Batangas</span>
                 <h1 class="hero-title">Crafted Coffee.<br><span class="text-accent">Memorable Moments.</span></h1>
-                <p class="hero-subtitle mx-auto">Premium espresso, refreshing juices, and oven-fresh desserts — made with care, served with warmth in every cup.</p>
+                <p class="hero-subtitle mx-auto">Premium espresso, refreshing juices, and oven-fresh desserts — made
+                    with care, served with warmth in every cup.</p>
                 <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
                     <button class="btn btn-accent btn-lg px-5 py-3 rounded-pill fw-bold" onclick="showOrderPage()">
                         <i class="bi bi-menu-button-wide me-2"></i>Order Now
                     </button>
-                    <button class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold" onclick="showOrderPage()">
+                    <button class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fw-semibold"
+                        onclick="showOrderPage()">
                         View Menu
                     </button>
                 </div>
@@ -98,21 +105,24 @@
                         <div class="feature-card">
                             <div class="feature-icon"><i class="bi bi-flower1"></i></div>
                             <h5>Premium Beans</h5>
-                            <p class="text-secondary small mb-0">Ethically sourced Arabica beans, roasted in small batches for rich flavor.</p>
+                            <p class="text-secondary small mb-0">Ethically sourced Arabica beans, roasted in small
+                                batches for rich flavor.</p>
                         </div>
                     </div>
                     <div class="col-md-4 reveal">
                         <div class="feature-card">
                             <div class="feature-icon"><i class="bi bi-clock-history"></i></div>
                             <h5>Made to Order</h5>
-                            <p class="text-secondary small mb-0">Every cup and dessert prepared fresh when you order — never pre-made.</p>
+                            <p class="text-secondary small mb-0">Every cup and dessert prepared fresh when you order —
+                                never pre-made.</p>
                         </div>
                     </div>
                     <div class="col-md-4 reveal">
                         <div class="feature-card">
                             <div class="feature-icon"><i class="bi bi-heart-fill"></i></div>
                             <h5>Cozy Experience</h5>
-                            <p class="text-secondary small mb-0">A welcoming space designed for studying, catching up, and relaxing.</p>
+                            <p class="text-secondary small mb-0">A welcoming space designed for studying, catching up,
+                                and relaxing.</p>
                         </div>
                     </div>
                 </div>
@@ -130,7 +140,8 @@
                 <div class="section-header text-center mb-5 reveal">
                     <span class="section-label">Fan Favorites</span>
                     <h2 class="section-title">Bestsellers</h2>
-                    <p class="text-secondary mx-auto" style="max-width:480px">Loved by our regulars — these are the drinks and treats guests keep coming back for.</p>
+                    <p class="text-secondary mx-auto" style="max-width:480px">Loved by our regulars — these are the
+                        drinks and treats guests keep coming back for.</p>
                 </div>
                 <div class="featured-grid" id="featured-items"></div>
                 <div class="text-center mt-4 reveal">
@@ -150,8 +161,11 @@
                     <div class="col-lg-6 reveal">
                         <span class="section-label">Our Story</span>
                         <h2 class="section-title mb-3">Born from a Love of Coffee</h2>
-                        <p class="text-secondary">The Coffee House started as a small dream in Sto. Tomas — a place where every guest feels at home. We source quality beans, bake fresh pastries every morning, and pour heart into every cup.</p>
-                        <p class="text-secondary">Whether you're grabbing a quick espresso before class or settling in for an afternoon with friends, we're here to make your coffee moment special.</p>
+                        <p class="text-secondary">The Coffee House started as a small dream in Sto. Tomas — a place
+                            where every guest feels at home. We source quality beans, bake fresh pastries every morning,
+                            and pour heart into every cup.</p>
+                        <p class="text-secondary">Whether you're grabbing a quick espresso before class or settling in
+                            for an afternoon with friends, we're here to make your coffee moment special.</p>
                         <div class="about-highlights">
                             <div class="about-stat"><strong>2+</strong><span>Years Serving</span></div>
                             <div class="about-stat"><strong>5K+</strong><span>Happy Guests</span></div>
@@ -170,22 +184,26 @@
                 </div>
                 <div class="row g-3">
                     <div class="col-6 col-md-3 reveal">
-                        <div class="gallery-item" style="background-image:url('images/latte.jpg')" onclick="showOrderPage()">
+                        <div class="gallery-item" style="background-image:url('images/latte.jpg')"
+                            onclick="showOrderPage()">
                             <span>Velvety Latte</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3 reveal">
-                        <div class="gallery-item" style="background-image:url('images/cappuccino.jpg')" onclick="showOrderPage()">
+                        <div class="gallery-item" style="background-image:url('images/cappuccino.jpg')"
+                            onclick="showOrderPage()">
                             <span>Cappuccino</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3 reveal">
-                        <div class="gallery-item" style="background-image:url('images/chocolate-cake.jpg')" onclick="showOrderPage()">
+                        <div class="gallery-item" style="background-image:url('images/chocolate-cake.jpg')"
+                            onclick="showOrderPage()">
                             <span>Chocolate Cake</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3 reveal">
-                        <div class="gallery-item" style="background-image:url('images/iced-latte.jpg')" onclick="showOrderPage()">
+                        <div class="gallery-item" style="background-image:url('images/iced-latte.jpg')"
+                            onclick="showOrderPage()">
                             <span>Iced Latte</span>
                         </div>
                     </div>
@@ -210,12 +228,15 @@
                         <div class="col-lg-6">
                             <span class="section-label">Stay Connected</span>
                             <h3 class="mb-2">Get Coffee Deals & New Menu Alerts</h3>
-                            <p class="text-secondary small mb-0">Subscribe for exclusive promos, seasonal specials, and first dibs on new drinks.</p>
+                            <p class="text-secondary small mb-0">Subscribe for exclusive promos, seasonal specials, and
+                                first dibs on new drinks.</p>
                         </div>
                         <div class="col-lg-6">
                             <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                                <input type="email" id="newsletter-email" class="form-control newsletter-input" placeholder="your@email.com" required>
-                                <button type="submit" class="btn btn-accent rounded-pill px-4 fw-bold">Subscribe</button>
+                                <input type="email" id="newsletter-email" class="form-control newsletter-input"
+                                    placeholder="your@email.com" required>
+                                <button type="submit"
+                                    class="btn btn-accent rounded-pill px-4 fw-bold">Subscribe</button>
                             </form>
                         </div>
                     </div>
@@ -227,8 +248,10 @@
             <div class="container">
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <h5 class="footer-brand"><i class="bi bi-cup-hot-fill text-accent me-2"></i>The Coffee House</h5>
-                        <p class="text-secondary small">Your neighborhood café for quality coffee, fresh drinks, and sweet treats.</p>
+                        <h5 class="footer-brand"><i class="bi bi-cup-hot-fill text-accent me-2"></i>The Coffee House
+                        </h5>
+                        <p class="text-secondary small">Your neighborhood café for quality coffee, fresh drinks, and
+                            sweet treats.</p>
                         <div class="social-links mt-3">
                             <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
                             <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
@@ -243,7 +266,8 @@
                     <div class="col-md-4">
                         <h6 class="footer-heading">Visit Us</h6>
                         <p class="text-secondary small mb-1"><i class="bi bi-geo-alt me-1"></i> Sto. Tomas, Batangas</p>
-                        <p class="text-secondary small mb-0"><i class="bi bi-envelope me-1"></i> hello@coffeehouse.ph</p>
+                        <p class="text-secondary small mb-0"><i class="bi bi-envelope me-1"></i> hello@coffeehouse.ph
+                        </p>
                     </div>
                 </div>
                 <hr class="border-secondary border-opacity-25 my-4">
@@ -283,25 +307,87 @@
 
             <div class="d-flex justify-content-center flex-wrap gap-2 mb-4 filter-row">
                 <button class="btn btn-outline-accent active filter-btn" onclick="filterMenu('all', event)">All</button>
-                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('coffee', event)"><i class="bi bi-cup-hot me-1"></i>Coffee</button>
-                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('tea', event)"><i class="bi bi-cup me-1"></i>Tea</button>
-                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('juice', event)"><i class="bi bi-droplet me-1"></i>Juice</button>
-                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('dessert', event)"><i class="bi bi-cake2 me-1"></i>Dessert</button>
-                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('breakfast', event)"><i class="bi bi-egg-fried me-1"></i>Breakfast</button>
-                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('favorites', event)"><i class="bi bi-heart-fill me-1"></i>Favorites</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('coffee', event)"><i
+                        class="bi bi-cup-hot me-1"></i>Coffee</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('tea', event)"><i
+                        class="bi bi-cup me-1"></i>Tea</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('juice', event)"><i
+                        class="bi bi-droplet me-1"></i>Juice</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('dessert', event)"><i
+                        class="bi bi-cake2 me-1"></i>Dessert</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('breakfast', event)"><i
+                        class="bi bi-egg-fried me-1"></i>Breakfast</button>
+                <button class="btn btn-outline-accent filter-btn" onclick="filterMenu('favorites', event)"><i
+                        class="bi bi-heart-fill me-1"></i>Favorites</button>
             </div>
 
             <p class="text-center text-secondary small mb-4" id="menu-count-label">Loading menu...</p>
 
             <div id="menu-loading" class="row g-3 mb-4 menu-skeleton-grid">
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
-                <div class="col-6 col-md-4 col-lg-3"><div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line w-75"></div><div class="skeleton-line w-50"></div><div class="skeleton-btn"></div></div></div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skeleton-card">
+                        <div class="skeleton-img"></div>
+                        <div class="skeleton-line w-75"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
             </div>
 
             <div id="coffee-container" class="row g-3 menu-fade-in"></div>
@@ -309,7 +395,8 @@
 
         <div class="fixed-bottom cart-bar p-3">
             <div class="container">
-                <button class="btn btn-accent btn-lg rounded-pill shadow-lg w-100 fw-bold d-flex justify-content-between align-items-center px-4"
+                <button
+                    class="btn btn-accent btn-lg rounded-pill shadow-lg w-100 fw-bold d-flex justify-content-between align-items-center px-4"
                     data-bs-toggle="modal" data-bs-target="#orderSummaryModal" id="cart-bar-btn">
                     <span><i class="bi bi-bag-check-fill me-2"></i>My Order (<span id="order-count">0</span>)</span>
                     <span id="cart-bar-total" class="cart-bar-total">₱0.00</span>
@@ -352,11 +439,13 @@
                     </button>
                 </div>
             </div>
-            <p class="text-center text-secondary small mt-3 mb-0">Admin access: click logo 5× · Password: <code class="text-accent">coffee2024</code></p>
+            <p class="text-center text-secondary small mt-3 mb-0">Admin access: click logo 5× · Password: <code
+                    class="text-accent">coffee2024</code></p>
         </div>
     </section>
 
-    <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        aria-label="Back to top">
         <i class="bi bi-arrow-up"></i>
     </button>
 
@@ -395,8 +484,10 @@
                         <div class="promo-box mt-3">
                             <div class="option-label">Promo Code</div>
                             <div class="d-flex gap-2">
-                                <input type="text" id="promo-code-input" class="form-control checkout-input" placeholder="Try WELCOME10">
-                                <button class="btn btn-outline-accent rounded-pill px-3 fw-semibold" onclick="applyPromoCode()">Apply</button>
+                                <input type="text" id="promo-code-input" class="form-control checkout-input"
+                                    placeholder="Try WELCOME10">
+                                <button class="btn btn-outline-accent rounded-pill px-3 fw-semibold"
+                                    onclick="applyPromoCode()">Apply</button>
                             </div>
                             <small id="promo-message" class="promo-message d-block mt-1"></small>
                         </div>
@@ -450,20 +541,24 @@
                     </div>
                     <div class="mb-3">
                         <label class="option-label" for="customer-name">Your Name</label>
-                        <input type="text" id="customer-name" class="form-control checkout-input" placeholder="Juan Dela Cruz" required>
+                        <input type="text" id="customer-name" class="form-control checkout-input"
+                            placeholder="Juan Dela Cruz" required>
                     </div>
                     <div class="mb-3">
                         <label class="option-label" for="customer-phone">Contact Number</label>
-                        <input type="tel" id="customer-phone" class="form-control checkout-input" placeholder="09XX XXX XXXX" required>
+                        <input type="tel" id="customer-phone" class="form-control checkout-input"
+                            placeholder="09XX XXX XXXX" required>
                     </div>
                     <div class="mb-3">
                         <label class="option-label" for="order-instructions">Order Notes</label>
-                        <textarea id="order-instructions" class="form-control checkout-input" rows="2" placeholder="e.g. Less ice on all drinks, call when ready..."></textarea>
+                        <textarea id="order-instructions" class="form-control checkout-input" rows="2"
+                            placeholder="e.g. Less ice on all drinks, call when ready..."></textarea>
                     </div>
                     <div class="checkout-summary p-3 rounded-3">
                         <small class="text-secondary d-block mb-1">Order total</small>
                         <span id="checkout-total-preview" class="fs-4 fw-bold text-accent">₱0.00</span>
-                        <small class="text-secondary d-block mt-1">Use promo code <strong class="text-accent">WELCOME10</strong> for 10% off</small>
+                        <small class="text-secondary d-block mt-1">Use promo code <strong
+                                class="text-accent">WELCOME10</strong> for 10% off</small>
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">
@@ -541,4 +636,5 @@
     </script>
     <script src="script.js"></script>
 </body>
+
 </html>

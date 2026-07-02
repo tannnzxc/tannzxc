@@ -13,7 +13,7 @@
 
     const pageTitles = {
         about: 'About Me',
-        ai: 'AI Skills',
+        ai: 'Learning AI',
         academic: 'Projects',
         skills: 'Technical Skills',
         resume: 'Resume',
@@ -191,7 +191,7 @@
         animateCounters();
     }
 
-    const phrases = ['Web Development', 'Data Analytics', 'AI-Assisted Coding', 'Power BI Dashboards'];
+    const phrases = ['Web Development', 'Data Analytics', 'Learning AI Tools', 'Power BI Dashboards'];
     const typedEl = document.getElementById('typedText');
     if (typedEl) {
         let phraseIndex = 0;
