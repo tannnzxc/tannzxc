@@ -387,10 +387,15 @@ function startCoffeeApp() {
     function initScrollEffects() {
         const nav = document.getElementById('mainNav');
         const backTop = document.getElementById('back-to-top');
+        const scrollBar = document.getElementById('scrollProgress');
         window.addEventListener('scroll', () => {
             if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 40);
             if (backTop) backTop.classList.toggle('visible', window.scrollY > 400);
-        });
+            if (scrollBar) {
+                const h = document.documentElement.scrollHeight - window.innerHeight;
+                scrollBar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+            }
+        }, { passive: true });
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {

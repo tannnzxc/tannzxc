@@ -14,21 +14,21 @@
 
     <style>
         :root {
-            --bg-deep: #070d18;
-            --bg-mid: #0f1a2e;
-            --surface: rgba(20, 35, 58, 0.82);
-            --surface-solid: #152238;
+            --bg-deep: #090c10;
+            --bg-mid: #111820;
+            --surface: rgba(17, 24, 32, 0.92);
+            --surface-solid: #141b24;
             --border: rgba(148, 163, 184, 0.14);
-            --border-bright: rgba(56, 189, 248, 0.35);
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.35);
-            --text: #f1f5f9;
-            --text-muted: #94a3b8;
+            --border-bright: rgba(47, 111, 237, 0.35);
+            --accent: #4d8df7;
+            --accent-glow: rgba(47, 111, 237, 0.2);
+            --text: #f4f7fb;
+            --text-muted: #9aa8b8;
             --success: #22c55e;
-            --radius: 24px;
-            --radius-lg: 32px;
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.04);
-            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.45), 0 0 40px rgba(56, 189, 248, 0.12);
+            --radius: 20px;
+            --radius-lg: 24px;
+            --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.22);
+            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.14), 0 16px 40px rgba(47, 111, 237, 0.12);
             --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
         }
 
@@ -37,9 +37,8 @@
         body {
             background: var(--bg-deep);
             background-image:
-                radial-gradient(ellipse at 80% 0%, rgba(56, 189, 248, 0.14) 0%, transparent 50%),
-                radial-gradient(ellipse at 10% 100%, rgba(99, 102, 241, 0.1) 0%, transparent 45%),
-                linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%),
+                radial-gradient(ellipse at 50% -10%, rgba(47, 111, 237, 0.08) 0%, transparent 55%);
             color: var(--text);
             font-family: 'Inter', system-ui, sans-serif;
             min-height: 100vh;
@@ -243,12 +242,15 @@
 
         .thumb-row {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
             gap: 0.5rem;
             margin-top: 1.25rem;
             position: relative;
             z-index: 1;
+            overflow-x: auto;
+            padding-bottom: 0.35rem;
+            scrollbar-width: thin;
         }
 
         #imageLabel {
@@ -261,7 +263,8 @@
         .thumb {
             width: 68px;
             height: 68px;
-            border-radius: 16px;
+            min-width: 68px;
+            border-radius: 14px;
             border: 2px solid var(--border);
             background: linear-gradient(180deg, #eef2f7, #f8fafc);
             cursor: pointer;
@@ -537,6 +540,115 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 0.82rem;
+            background: rgba(9, 12, 16, 0.6);
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, #2563eb, var(--accent));
+            z-index: 200;
+            transition: width 0.1s linear;
+        }
+
+        .trust-strip {
+            border-bottom: 1px solid var(--border);
+            background: rgba(17, 24, 32, 0.75);
+            padding: 0.85rem 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .trust-item i {
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .pro-experience-section {
+            padding: 2.5rem 0 1rem;
+        }
+
+        .section-head { margin-bottom: 2rem; }
+
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 560px;
+        }
+
+        .pro-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.35rem 1.25rem;
+            height: 100%;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .pro-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-bright);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .pro-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(47, 111, 237, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .pro-card h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.92rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .pro-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 767px) {
+            .trust-grid { grid-template-columns: repeat(2, 1fr); }
+            .info-strip { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 767px) {
@@ -547,6 +659,8 @@
 </head>
 
 <body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <header class="store-nav">
         <div class="container d-flex align-items-center justify-content-between">
@@ -562,6 +676,17 @@
         </div>
     </header>
 
+    <div class="trust-strip">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item"><i class="bi bi-shield-check"></i><span>Official Apple Product</span></div>
+                <div class="trust-item"><i class="bi bi-truck"></i><span>Free Delivery Info</span></div>
+                <div class="trust-item"><i class="bi bi-arrow-repeat"></i><span>14-Day Return Policy</span></div>
+                <div class="trust-item"><i class="bi bi-patch-check"></i><span>1-Year Warranty</span></div>
+            </div>
+        </div>
+    </div>
+
     <main class="product-hero">
         <div class="container">
             <div class="row g-4 g-lg-5 align-items-start">
@@ -570,28 +695,10 @@
                         <span class="badge-new">Product Specs</span>
                         <div class="image-stage">
                             <img id="productImage"
-                                src="images/iphone-blue.jpg"
-                                alt="iPhone 15 Pro Max Blue Titanium">
+                                src="images/iphone-15-pro-max.jpg"
+                                alt="iPhone 15 Pro Max">
                         </div>
                         <div class="image-pedestal"></div>
-                        <div class="thumb-row">
-                            <div class="thumb" data-img="images/iphone-main.jpg" data-label="Front View">
-                                <img src="images/iphone-main.jpg" alt="Front view">
-                            </div>
-                            <div class="thumb" data-img="images/iphone-back.jpg" data-label="Back View">
-                                <img src="images/iphone-back.jpg" alt="Back view">
-                            </div>
-                            <div class="thumb" data-img="images/iphone-side.jpg" data-label="Side View">
-                                <img src="images/iphone-side.jpg" alt="Side view">
-                            </div>
-                            <div class="thumb" data-img="images/iphone-camera.jpg" data-label="Camera Detail">
-                                <img src="images/iphone-camera.jpg" alt="Camera detail">
-                            </div>
-                            <div class="thumb active" data-img="images/iphone-blue.jpg" data-label="Blue Titanium">
-                                <img src="images/iphone-blue.jpg" alt="Blue titanium">
-                            </div>
-                        </div>
-                        <p class="text-center mt-2 mb-0 small text-secondary" id="imageLabel">Blue Titanium</p>
                     </div>
                 </div>
 
@@ -628,16 +735,12 @@
                         <span class="option-label">Available Colors — <span id="colorLabel">Blue Titanium</span></span>
                         <div class="color-options">
                             <button type="button" class="color-btn active" data-color="Blue Titanium"
-                                data-img="images/iphone-blue.jpg"
                                 style="background:#3d4f5f" aria-label="Blue Titanium"></button>
                             <button type="button" class="color-btn" data-color="Natural Titanium"
-                                data-img="images/iphone-back.jpg"
                                 style="background:#9a8f82" aria-label="Natural Titanium"></button>
                             <button type="button" class="color-btn" data-color="White Titanium"
-                                data-img="images/iphone-main.jpg"
                                 style="background:#e8e6e3" aria-label="White Titanium"></button>
                             <button type="button" class="color-btn" data-color="Black Titanium"
-                                data-img="images/iphone-side.jpg"
                                 style="background:#2b2b2e" aria-label="Black Titanium"></button>
                         </div>
 
@@ -698,6 +801,46 @@
                         <div class="highlight-icon"><i class="bi bi-usb-c"></i></div>
                         <h6>USB-C &amp; Action Button</h6>
                         <p>Faster transfers, universal charging, and a customizable Action button.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pro-experience-section">
+        <div class="container">
+            <div class="section-head text-center">
+                <span class="section-eyebrow">Pro Experience</span>
+                <h2 class="section-heading mb-2">Built for Power Users</h2>
+                <p class="section-sub mx-auto">Every detail of the iPhone 15 Pro Max is engineered for performance, creativity, and everyday reliability.</p>
+            </div>
+            <div class="row g-3 g-lg-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="pro-card">
+                        <div class="pro-card-icon"><i class="bi bi-display"></i></div>
+                        <h6>ProMotion Display</h6>
+                        <p>6.7-inch Super Retina XDR with adaptive 120Hz refresh for ultra-smooth scrolling.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="pro-card">
+                        <div class="pro-card-icon"><i class="bi bi-camera-video"></i></div>
+                        <h6>Cinematic Video</h6>
+                        <p>4K ProRes recording and advanced stabilization for creator-grade footage.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="pro-card">
+                        <div class="pro-card-icon"><i class="bi bi-battery-full"></i></div>
+                        <h6>All-Day Battery</h6>
+                        <p>Optimized power efficiency with USB-C fast charging and MagSafe support.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="pro-card">
+                        <div class="pro-card-icon"><i class="bi bi-shield-lock"></i></div>
+                        <h6>Secure by Design</h6>
+                        <p>Face ID, on-device processing, and iOS privacy controls built in.</p>
                     </div>
                 </div>
             </div>
@@ -807,25 +950,9 @@
         const priceNote = document.getElementById('priceNote');
         const storageSpec = document.getElementById('storageSpec');
         const colorLabel = document.getElementById('colorLabel');
-        const productImage = document.getElementById('productImage');
-        const imageLabel = document.getElementById('imageLabel');
 
         function formatPrice(num) {
             return '₱' + num.toLocaleString('en-PH');
-        }
-
-        function swapImage(src, label) {
-            productImage.classList.add('fade-swap');
-            setTimeout(() => {
-                productImage.src = src;
-                productImage.alt = 'iPhone 15 Pro Max — ' + (label || 'product view');
-                if (label && imageLabel) imageLabel.textContent = label;
-                productImage.classList.remove('fade-swap');
-            }, 180);
-
-            document.querySelectorAll('.thumb').forEach((t) => {
-                t.classList.toggle('active', t.dataset.img === src);
-            });
         }
 
         document.querySelectorAll('.storage-btn').forEach((btn) => {
@@ -844,17 +971,16 @@
                 document.querySelectorAll('.color-btn').forEach((b) => b.classList.remove('active'));
                 btn.classList.add('active');
                 colorLabel.textContent = btn.dataset.color;
-                if (btn.dataset.img) swapImage(btn.dataset.img, btn.dataset.color);
             });
         });
-
-        document.querySelectorAll('.thumb').forEach((thumb) => {
-            thumb.addEventListener('click', () => {
-                document.querySelectorAll('.thumb').forEach((t) => t.classList.remove('active'));
-                thumb.classList.add('active');
-                swapImage(thumb.dataset.img, thumb.dataset.label);
-            });
-        });
+    </script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const bar = document.getElementById('scrollProgress');
+            if (!bar) return;
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+        }, { passive: true });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

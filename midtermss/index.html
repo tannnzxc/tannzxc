@@ -22,6 +22,8 @@
 
 <body>
 
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <div class="announcement-bar">
         <div class="marquee-track">
             <span><i class="bi bi-star-fill"></i> Free upsize on your first order this week</span>
@@ -61,6 +63,17 @@
             </div>
         </div>
     </nav>
+
+    <div class="trust-partners">
+        <div class="container">
+            <div class="trust-partners-grid">
+                <div class="trust-partner-item"><i class="bi bi-award-fill"></i><span>Premium Arabica Beans</span></div>
+                <div class="trust-partner-item"><i class="bi bi-truck"></i><span>Fast Pickup Ready</span></div>
+                <div class="trust-partner-item"><i class="bi bi-shield-check"></i><span>Quality Guaranteed</span></div>
+                <div class="trust-partner-item"><i class="bi bi-heart-fill"></i><span>Locally Loved Café</span></div>
+            </div>
+        </div>
+    </div>
 
     <div id="offline-banner" class="offline-banner d-none">
         <i class="bi bi-wifi-off me-2"></i> You're offline — menu & cart still work from cache.
@@ -124,6 +137,42 @@
                             <p class="text-secondary small mb-0">A welcoming space designed for studying, catching up,
                                 and relaxing.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brew-journey-section py-5">
+            <div class="container">
+                <div class="section-header text-center mb-5 reveal">
+                    <span class="section-label">From Bean to Cup</span>
+                    <h2 class="section-title">Our Brewing Journey</h2>
+                    <p class="text-secondary mx-auto" style="max-width:520px">Every cup follows a careful process — sourced ethically, roasted with precision, and crafted fresh for you.</p>
+                </div>
+                <div class="brew-timeline">
+                    <div class="brew-step reveal">
+                        <div class="brew-step-num">01</div>
+                        <div class="brew-step-icon"><i class="bi bi-globe-americas"></i></div>
+                        <h6>Ethical Sourcing</h6>
+                        <p>Single-origin beans selected from trusted farms for consistent quality and rich flavor.</p>
+                    </div>
+                    <div class="brew-step reveal">
+                        <div class="brew-step-num">02</div>
+                        <div class="brew-step-icon"><i class="bi bi-fire"></i></div>
+                        <h6>Small-Batch Roast</h6>
+                        <p>Roasted in controlled batches to unlock the perfect aroma, body, and finish.</p>
+                    </div>
+                    <div class="brew-step reveal">
+                        <div class="brew-step-num">03</div>
+                        <div class="brew-step-icon"><i class="bi bi-droplet-half"></i></div>
+                        <h6>Precise Extraction</h6>
+                        <p>Barista-calibrated grind and brew ratios for balanced sweetness in every sip.</p>
+                    </div>
+                    <div class="brew-step reveal">
+                        <div class="brew-step-num">04</div>
+                        <div class="brew-step-icon"><i class="bi bi-cup-straw"></i></div>
+                        <h6>Served Fresh</h6>
+                        <p>Prepared to order and handed to you at peak flavor — never sitting on a warmer.</p>
                     </div>
                 </div>
             </div>
@@ -218,6 +267,25 @@
                     <h2 class="section-title">What People Say</h2>
                 </div>
                 <div class="testimonial-track" id="testimonial-track"></div>
+            </div>
+        </section>
+
+        <section class="promo-cta-section py-5">
+            <div class="container">
+                <div class="promo-cta-card reveal">
+                    <div class="row align-items-center g-4">
+                        <div class="col-lg-7">
+                            <span class="promo-cta-badge">Limited Offer</span>
+                            <h3 class="promo-cta-title mb-2">Get 10% Off Your First Order</h3>
+                            <p class="text-secondary mb-0">Use code <strong class="text-accent">WELCOME10</strong> at checkout and enjoy premium coffee at a welcome price.</p>
+                        </div>
+                        <div class="col-lg-5 text-lg-end">
+                            <button class="btn btn-accent btn-lg rounded-pill px-5 fw-bold" onclick="showOrderPage()">
+                                <i class="bi bi-bag-check me-2"></i>Order & Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

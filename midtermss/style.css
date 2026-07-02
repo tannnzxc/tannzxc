@@ -1429,6 +1429,172 @@ body {
     .modal { position: absolute; left: 0; top: 0; }
 }
 
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-dark), var(--accent), var(--accent-light));
+    z-index: 1100;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+.trust-partners {
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(200, 149, 108, 0.12);
+    padding: 0.75rem 0;
+}
+
+.trust-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+.trust-partner-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.3px;
+}
+
+.trust-partner-item i {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.brew-journey-section {
+    background: linear-gradient(180deg, transparent, rgba(200, 149, 108, 0.04), transparent);
+}
+
+.brew-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    position: relative;
+}
+
+.brew-timeline::before {
+    content: '';
+    position: absolute;
+    top: 52px;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 149, 108, 0.35), transparent);
+    pointer-events: none;
+}
+
+.brew-step {
+    background: rgba(30, 41, 59, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brew-step:hover {
+    transform: translateY(-6px);
+    border-color: rgba(200, 149, 108, 0.25);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.brew-step-num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+.brew-step-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 1rem;
+    border-radius: 14px;
+    background: rgba(200, 149, 108, 0.12);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.brew-step h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.brew-step p {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin: 0;
+    line-height: 1.55;
+}
+
+.promo-cta-section {
+    padding-top: 0 !important;
+}
+
+.promo-cta-card {
+    background: linear-gradient(135deg, rgba(44, 24, 16, 0.95), rgba(30, 41, 59, 0.9));
+    border: 1px solid rgba(200, 149, 108, 0.22);
+    border-radius: 24px;
+    padding: 2.25rem 2rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.promo-cta-card::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(200, 149, 108, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.promo-cta-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.promo-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    font-weight: 700;
+}
+
+@media (max-width: 991px) {
+    .brew-timeline { grid-template-columns: repeat(2, 1fr); }
+    .brew-timeline::before { display: none; }
+}
+
+@media (max-width: 575px) {
+    .trust-partners-grid { grid-template-columns: repeat(2, 1fr); }
+    .brew-timeline { grid-template-columns: 1fr; }
+    .promo-cta-card { padding: 1.75rem 1.25rem; text-align: center; }
+    .promo-cta-card .text-lg-end { text-align: center !important; }
+}
+
 [data-bs-theme="light"] .checkout-input {
     background: #fff !important;
     color: #1e293b !important;
