@@ -1,0 +1,32 @@
+{
+  "name": "Tristan P. Fornoles | IT Portfolio",
+  "short_name": "Tristan IT",
+  "description": "Portfolio of Tristan P. Fornoles — 3rd Year IT Student at PUP Sto. Tomas.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#090c10",
+  "theme_color": "#090c10",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

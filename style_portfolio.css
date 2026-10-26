@@ -62,7 +62,10 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
 
 body {
     background: var(--bg-deep);
@@ -73,8 +76,14 @@ body {
     color: var(--text);
     font-family: var(--font-body);
     min-height: 100vh;
+    min-height: 100dvh;
     line-height: 1.65;
     transition: background 0.4s, color 0.3s;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 [data-theme="light"] body {
@@ -152,7 +161,7 @@ body::before {
     background: rgba(9, 12, 16, 0.88);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
-    padding: 0.85rem 0 0;
+    padding: calc(0.85rem + env(safe-area-inset-top)) 0 0;
     margin-bottom: 2rem;
     position: sticky;
     top: 0;
@@ -1722,8 +1731,8 @@ body::before {
 
 .back-top {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    right: calc(1.5rem + env(safe-area-inset-right));
     width: 44px;
     height: 44px;
     border-radius: var(--radius-sm);
@@ -1755,8 +1764,8 @@ body::before {
 
 .toast-msg {
     position: fixed;
-    bottom: 5.5rem;
-    right: 1.5rem;
+    bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    right: calc(1.5rem + env(safe-area-inset-right));
     background: var(--surface-solid);
     color: var(--text);
     border: 1px solid var(--border-bright);

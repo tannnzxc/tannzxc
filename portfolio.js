@@ -32,8 +32,11 @@
     }
 
     function updateThemeIcon() {
-        if (!themeBtn) return;
         const isLight = root.getAttribute('data-theme') === 'light';
+        const themeColor = isLight ? '#f4f6f9' : '#090c10';
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta) themeMeta.setAttribute('content', themeColor);
+        if (!themeBtn) return;
         themeBtn.querySelector('i').className = isLight ? 'bi bi-moon-fill' : 'bi bi-sun-fill';
         themeBtn.setAttribute('aria-label', isLight ? 'Toggle dark mode' : 'Toggle light mode');
     }
