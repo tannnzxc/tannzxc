@@ -4,7 +4,6 @@
     const navLinks = document.querySelectorAll('[data-nav]');
     const pageViews = document.querySelectorAll('.page-view');
     const themeBtn = document.getElementById('themeToggle');
-    const menuBtn = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
     const backTop = document.getElementById('backTop');
     const copyEmailBtn = document.getElementById('copyEmail');
@@ -13,7 +12,6 @@
 
     const pageTitles = {
         about: 'About Me',
-        ai: 'Learning AI',
         academic: 'Projects',
         skills: 'Technical Skills',
         resume: 'Resume',
@@ -56,20 +54,6 @@
         }
         updateThemeIcon();
     });
-
-    menuBtn?.addEventListener('click', () => {
-        const open = mobileNav.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', open);
-        menuBtn.querySelector('i').className = open ? 'bi bi-x-lg' : 'bi bi-list';
-    });
-
-    function closeMobileNav() {
-        mobileNav?.classList.remove('open');
-        if (menuBtn) {
-            menuBtn.setAttribute('aria-expanded', 'false');
-            menuBtn.querySelector('i').className = 'bi bi-list';
-        }
-    }
 
     copyEmailBtn?.addEventListener('click', async () => {
         const email = copyEmailBtn.dataset.email;
@@ -140,7 +124,7 @@
     }
 
     function showPage(page, pushState = true) {
-        const validPages = ['about', 'ai', 'academic', 'skills', 'resume', 'contact'];
+        const validPages = ['about', 'academic', 'skills', 'resume', 'contact'];
         if (!validPages.includes(page)) page = 'about';
 
         if (page === currentPage) return;
@@ -162,7 +146,6 @@
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        closeMobileNav();
 
         setTimeout(() => {
             pageViews.forEach((view) => view.classList.remove('leaving'));
@@ -217,7 +200,7 @@
         animateTerminal();
     }
 
-    const phrases = ['Web Development', 'Data Analytics', 'Learning AI Tools', 'Power BI Dashboards'];
+    const phrases = ['Web Development', 'Data Analytics', 'MySQL Databases', 'Power BI Dashboards'];
     const typedEl = document.getElementById('typedText');
     if (typedEl) {
         let phraseIndex = 0;
